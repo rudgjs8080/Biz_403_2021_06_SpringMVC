@@ -16,7 +16,10 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	
-	<!-- localhost:8080... -->
+	<!-- localhost:8080/hello/static/*** 로 요청을 하면
+		webapp/static 폴더에 있는 파일을 찾아라
+		그리고 바로 response 하라
+		이 요청은 Controller로 전달할 필요가 없다 -->
 	<resources mapping="/static/**" location="/static/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->

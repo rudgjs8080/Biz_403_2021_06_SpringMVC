@@ -12,8 +12,8 @@
 		<groupId>com.callor</groupId>
 		<artifactId>parent</artifactId>
 		<version>1.0</version>
-
 	</parent>
+	
 	<dependencies>
 		<!-- 프로젝트의 log를 관리하기 위한 dependency -->
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
