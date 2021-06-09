@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.callor.jdbc.model.AuthorVO;
+import com.callor.jdbc.model.CompanyVO;
 import com.callor.jdbc.persistance.AuthorDao;
 
 public class AuthorDaoImplV1 implements AuthorDao{
@@ -28,6 +29,10 @@ public class AuthorDaoImplV1 implements AuthorDao{
 	@Override
 	public AuthorVO findById(String pk) {
 		// TODO Auto-generated method stub
+		String sql = "select * from tbl_author ";
+		sql += " where au_code = ? ";
+		Object[] params = new Object[] {pk};
+		AuthorVO vo = (AuthorVO) jdbcTemplate.query(sql,params, new BeanPropertyRowMapper<AuthorVO>(AuthorVO.class));
 		return null;
 	}
 
@@ -52,12 +57,24 @@ public class AuthorDaoImplV1 implements AuthorDao{
 	@Override
 	public List<AuthorVO> findByAName(String aname) {
 		// TODO Auto-generated method stub
+		
+		String sql = "select * from tbl_author ";
+		sql += "where au_title = ? ";
+		Object[] params = new Object[] {aname};
+		AuthorVO vo = (AuthorVO) jdbcTemplate.query(sql,params, new BeanPropertyRowMapper<AuthorVO>(AuthorVO.class));
+		
 		return null;
 	}
 
 	@Override
 	public List<AuthorVO> findByATel(String tel) {
 		// TODO Auto-generated method stub
+		
+		String sql = "select * from tbl_author ";
+		sql += "where au_tel = ? ";
+		Object[] params = new Object[] {tel};
+		AuthorVO vo = (AuthorVO) jdbcTemplate.query(sql,params, new BeanPropertyRowMapper<AuthorVO>(AuthorVO.class));
+		
 		return null;
 	}
 

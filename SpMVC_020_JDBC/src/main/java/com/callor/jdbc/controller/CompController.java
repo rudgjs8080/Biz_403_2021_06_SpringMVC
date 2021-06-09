@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.callor.jdbc.model.CompanyVO;
 import com.callor.jdbc.persistance.CompDao;
+import com.callor.jdbc.service.CompService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,8 +16,11 @@ import lombok.extern.slf4j.Slf4j;
 public class CompController {
 	
 	protected final CompDao compDao;
-	public CompController(CompDao compDao) {
+	protected final CompService compService;
+	public CompController(CompDao compDao, CompService compService) {
 		this.compDao = compDao;
+		this.compService = compService;
+		
 	}
 	
 	// localhost:8080/jdbc/comp/insert로 호출되는 함수
@@ -31,7 +35,7 @@ public class CompController {
 	public String insert(CompanyVO cmVO) {
 		
 		log.debug("companyVO {}", cmVO.toString());
-		compDao.insert(cmVO);
+		compService.insert(cmVO);
 		
 		return "redirect:/";
 	}
@@ -41,6 +45,13 @@ public class CompController {
 	public String update() {
 		
 		return "comp/input";
+	}
+	// @RequestParam("pk") ??  
+	@RequestMapping(value="/delete", method=RequestMethod.GET)
+	public String delete(String pk) {
+		
+		compDao.delete(pk); 
+		return "redirect:/";
 	}
 	
 }

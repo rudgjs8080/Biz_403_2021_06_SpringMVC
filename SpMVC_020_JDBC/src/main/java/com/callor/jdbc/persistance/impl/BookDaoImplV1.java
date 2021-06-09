@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.callor.jdbc.model.BookVO;
+import com.callor.jdbc.model.CompanyVO;
 import com.callor.jdbc.persistance.BookDao;
 
 import lombok.extern.slf4j.Slf4j;
@@ -43,6 +44,12 @@ public class BookDaoImplV1 implements BookDao {
 	@Override
 	public BookVO findById(String pk) {
 		// TODO Auto-generated method stub
+		
+		String sql = "select * from tbl_books ";
+		sql += "where bk_isbn = ? ";
+		Object[] params = new Object[] {pk};
+		BookVO vo = (BookVO) jdbcTemplate.query(sql,params, new BeanPropertyRowMapper<BookVO>(BookVO.class));
+		
 		return null;
 	}
 
