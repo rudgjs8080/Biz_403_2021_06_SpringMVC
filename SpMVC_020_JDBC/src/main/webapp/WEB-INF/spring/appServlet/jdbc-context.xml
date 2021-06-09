@@ -9,11 +9,15 @@
 
 	<!-- properties 파일의 내용을 읽어서 변수 사용하기 위한 bean 설정 -->
 
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="fileEncoding" value="UTF-8"/>
-		<property name="location" value="/WEB-INF/spring/config/mysql.properties"/>
-	
-	
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="fileEncoding" value="UTF-8" />
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/spring/config/mysql.properties</value>
+				<value>/WEB-INF/spring/config/string.properties</value>
+			</list>
+		</property>
 	</bean>
 
 
@@ -29,10 +33,8 @@
 	<!-- jdbc를 통하여 DBMS에 연결하는 Connection 생성 -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName"
-			value="${mysql.driver}" />
-		<property name="url"
-			value="${mysql.url}" />
+		<property name="driverClassName" value="${mysql.driver}" />
+		<property name="url" value="${mysql.url}" />
 		<property name="username" value="${mysql.username}" />
 		<property name="password" value="${mysql.password}" />
 
