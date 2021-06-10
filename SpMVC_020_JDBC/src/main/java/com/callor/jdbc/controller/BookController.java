@@ -16,7 +16,7 @@ public class BookController {
 	public String books() {
 		
 		
-		log.debug("Books Root");
+		
 		return "books/list";
 	}
 	

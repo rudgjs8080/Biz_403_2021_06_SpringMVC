@@ -45,7 +45,7 @@ public class CompDaoImplV1 implements CompDao{
 
 		String sql = "select * from tbl_company";
 		List<CompanyVO> compList = jdbcTemplate.query(sql, new BeanPropertyRowMapper<CompanyVO>(CompanyVO.class));
-		log.debug("Comp Select {} ", compList.toString());
+		//log.debug("Comp Select {} ", compList.toString());
 		return null;
 	}
 

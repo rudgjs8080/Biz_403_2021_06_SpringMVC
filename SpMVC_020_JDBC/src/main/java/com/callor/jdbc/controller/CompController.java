@@ -34,7 +34,7 @@ public class CompController {
 	@RequestMapping(value="/insert", method=RequestMethod.POST)
 	public String insert(CompanyVO cmVO) {
 		
-		log.debug("companyVO {}", cmVO.toString());
+		//log.debug("companyVO {}", cmVO.toString());
 		compService.insert(cmVO);
 		
 		return "redirect:/";

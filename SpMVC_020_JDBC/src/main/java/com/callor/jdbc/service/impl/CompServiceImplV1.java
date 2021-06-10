@@ -24,7 +24,7 @@ public class CompServiceImplV1 implements CompService {
 		// TODO Auto-generated method stub
 
 		String cpCode = compDao.findByMaxCode();
-		log.debug("Cpcode {} ", cpCode);
+		//log.debug("Cpcode {} ", cpCode);
 
 		if (cpCode == null || cpCode.equals("")) {
 			// C0001

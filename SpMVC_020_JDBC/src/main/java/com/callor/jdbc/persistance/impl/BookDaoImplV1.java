@@ -37,7 +37,7 @@ public class BookDaoImplV1 implements BookDao {
 		 * return 해달라 
 		 */
 		List<BookVO> books = jdbcTemplate.query(sql, new BeanPropertyRowMapper<BookVO>(BookVO.class));
-		log.debug("SELECT {}", books.toString());
+		//log.debug("SELECT {}", books.toString());
 		return null;
 	}
 
