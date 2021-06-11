@@ -13,7 +13,7 @@ public class BookController {
 	
 	// localhost:8080/jdbc/books
 	@RequestMapping(value={"/",""}, method=RequestMethod.GET)
-	public String books() {
+	public String list() {
 		
 		
 		

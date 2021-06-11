@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-h1.page_title{
-	width:90%;
+h1.page_title {
+	width: 90%;
 	margin: 10px auto;
 }
 
@@ -16,34 +16,59 @@ table th, td {
 	border-top: 1px solid #aaa;
 	padding: 5px 8px;
 }
-table td {
-	margin-left: 20px;
-}
 
+table td {
+	margin-left: 30px;
+	text-align: center;
+}
 
 table tr:last-child td {
 	border-bottom: 1px solid #aaa;
 }
 
 table tr:nth-child(odd) {
+	background-color: #eee;
+}
+
+table tr:nth-child(even) {
 	background-color: #ddd;
 }
-table tr:nth-child(even){
-	background-color: #aaa;
-}
+
 table tr:hover {
-	background-color: #bbb;
+	background-color: #aaa;
 	cursor: pointer;
 }
-button{
+
+button {
 	padding: 10px 20px;
 	outline: 0;
 	border: 0;
+	border-radius: 10px;
 }
 
-button:hover{
-	box-shadow: 3px 3px 3px rgba(0,0,0,0.7);
+button:hover {
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
 	cursor: pointer;
+}
+
+button.btn_save {
+	background-color: blue;
+	color: white;
+}
+
+button.btn_reset {
+	background-color: green;
+	color: white;
+}
+
+button.btn_list {
+	background-color: purple;
+	color: white;
+}
+
+button.btn_delete {
+	background-color: red;
+	color: white;
 }
 
 div.btn_box {

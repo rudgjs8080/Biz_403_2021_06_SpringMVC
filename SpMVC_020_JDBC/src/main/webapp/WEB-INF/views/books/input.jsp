@@ -6,53 +6,7 @@
 <html>
 <%@ include file="/WEB-INF/views/include/include_head.jspf"%>
 <style>
-form {
-	width: 80%;
-	margin: 15px auto;
-}
 
-fieldset {
-	border: 1px solid green;
-	border-radius: 15px;
-}
-
-legend {
-	text-align: center;
-	padding: 10px 20px;
-	background-color: #aaa;
-}
-
-form div {
-	width: 80%;
-	margin: 5px auto;
-}
-
-form label {
-	display: inline-block;
-	width: 20%;
-	text-align: right;
-	margin: 4px 5px;
-	padding: 9px;
-	color: rgba(0, 0, 255, 0.8);
-	font-weight: gold;
-}
-
-form input {
-	width: 70%;
-	margin: 4px 5px;
-	padding: 8px;
-	border-radius: 15px;
-	outline: 0;
-	border-color: rgba(0, 255, 0, 0.5);
-}
-
-form input:focus {
-	border-color: #999;
-}
-
-form input:hover {
-	background-color: #bbb;
-}
 </style>
 <body>
 	<%@ include file="/WEB-INF/views/include/include_header.jspf"%>
@@ -91,36 +45,26 @@ form input:hover {
 
 		</fieldset>
 		<div class="btn_box">
-			<button type="button" class="btn_book_insert">도서등록</button>
+			<button type="button" class="btn_save books">저장</button>
 		</div>
 		<div class="btn_box">
-			<button type="reset" class="btn_book_reset">신규작성</button>
+			<button type="reset" class="btn_reset books">신규작성</button>
 		</div>
 		<div class="btn_box">
-			<button type="button" class="btn_book_list">리스트 바로가기</button>
+			<button type="button" class="btn_list books">리스트 바로가기</button>
 		</div>
 	</form>
-
-
-
 
 
 	<%@ include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
 <script>
-document.querySelector("button.btn_book_insert").addEventListener("click" () =>{
+document.querySelector("button.btn_save.books").addEventListener("click" () =>{
 	location.href = "${rootPath}/books/insert";
 	
 })
 
-document.querySelector("button.btn_book_insert")
+
 </script>
-
-
-
-
-
-
-
 
 </html>

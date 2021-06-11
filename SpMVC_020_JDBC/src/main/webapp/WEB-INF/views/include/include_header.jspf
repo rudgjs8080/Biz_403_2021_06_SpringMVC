@@ -50,6 +50,10 @@ nav#main_nav li:first-child {
 	margin-left: 15px;
 }
 
+nav#main_nav li:nth-of-type(5) {
+	margin-left: auto;
+}
+
 nav#main_nav li:hover {
 	background-color: #999;
 	cursor: pointer;
