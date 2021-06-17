@@ -56,7 +56,7 @@ public class CompDaoImplV1 implements CompDao{
 		sql += "where cp_code = ? ";
 		Object[] params = new Object[] {pk};
 		CompanyVO vo = (CompanyVO) jdbcTemplate.query(sql,params, new BeanPropertyRowMapper<CompanyVO>(CompanyVO.class));
-		return null;
+		return vo;
 	}
 
 	@Override

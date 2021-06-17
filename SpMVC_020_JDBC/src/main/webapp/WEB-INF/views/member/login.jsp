@@ -31,7 +31,6 @@ form#login_form input {
 	background: none;
 	border: 2px solid #3498db;
 	text-align: center;
-	
 }
 
 form#login_form input:focus {
@@ -51,9 +50,23 @@ form#login_form button {
 	color: white;
 	border-radius: 30px;
 	cursor: pointer;
-	width:200px;
+	width: 200px;
 }
-form#login_form button:hover{
+
+form#login_from button.btn_join {
+	background-color: #0000aa
+}
+
+form#login_form button:hover {
+	background-color: #2ecc71;
+}
+form#login_form div.msg{
+	margin:5px auto;
+	border-radius: 15px;
+	background-color: red;
+	color: yellow;
+	font-size: 20px;
+	padding: 12px 15px;
 }
 </style>
 <body>
@@ -62,9 +75,11 @@ form#login_form button:hover{
 	<section id="login">
 		<form id="login_form" method="POST">
 			<h2>로그인</h2>
-			<input name="m_username" placeholder="사용자 ID" /> <input
-				type="password" name="m_password" placeholder="비밀번호" />
-			<button>로그인</button>
+			<div class="msg">${MSG }</div>
+			<input name="m_username" id="m_username" placeholder="사용자 ID" /> <input
+				type="password" name="m_password" id="m_password" placeholder="비밀번호" />
+			<button type="button" class="btn_login">로그인</button>
+			<button type="button" class="btn_join">회원가입</button>
 
 		</form>
 	</section>
@@ -72,10 +87,44 @@ form#login_form button:hover{
 	<%@ include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
 <script>
-document.querySelector("button.btn_book_insert").addEventListener("click", () =>{
-	location.href = "${rootPath}/books/insert";
+
+// if("${MSG}" === "NONE"){
+	document.querySelector("div.msg").style.display="${MSG}"
+// }
+
+
+
+
+document.querySelector("button.btn_join").addEventListener("click", () =>{
+	location.href = "${rootPath}/member/join";
 	
+});
+
+document.querySelector("button.btn_login")
+.addEventListener("click", ()=>{
+	let username = document.querySelector("#m_username")
+	let password = document.querySelector("#m_password")
+	
+	/*
+		view 단에서 입력 유효성 검사하기
+		값이 입력되었는가를 검사하기
+		입력되지 않으면 alert를 보이고 입력 box에 focus 주기
+	*/
+	
+	if(username.value ===""){
+		alert("사용자 ID를 입력하세요")
+		username.focus()
+		return false;
+	}
+	if(password.value ===""){
+		alert("PW를 입력하세요")
+		password.focus()
+		return false;
+	}
+	// 유효성 검사를 통과하면 서버로 전송하기
+	document.querySelector("form#login_form").submit();
 })
+
 
 
 </script>

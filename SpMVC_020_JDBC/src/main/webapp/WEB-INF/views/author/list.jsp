@@ -10,7 +10,8 @@
 </style>
 <body>
 	<%@ include file="/WEB-INF/views/include/include_header.jspf"%>
-	<h1 class="page_title">저자정보</h1>
+	<section class="main_sec">
+	
 	<table>
 		<tr>
 			<th>저자코드</th>
@@ -30,6 +31,7 @@
 	<div class="btn_box">
 		<button class="btn_insert author">저자등록</button>
 	</div>
+	</section>
 	<%@ include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
 <script>
