@@ -89,7 +89,7 @@ public class CompDaoImplV1 implements CompDao{
 
 	/*
 	 * jdbcTemplate을 사용하여 QUERY를 실행할 때
-	 * 각 method에서 매개벼수를 받아
+	 * 각 method에서 매개변수를 받아
 	 * Query에 전달할텐데
 	 * 이때 매개변수는 primitive로 받으면 값을 
 	 * 변환시키는 어려움이 있다
