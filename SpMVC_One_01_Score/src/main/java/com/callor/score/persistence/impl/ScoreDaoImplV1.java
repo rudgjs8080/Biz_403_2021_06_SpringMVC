@@ -1,14 +1,15 @@
-package com.callor.score.persistance.impl;
+package com.callor.score.persistence.impl;
 
 import java.util.List;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.callor.score.model.ScoreVO;
-import com.callor.score.persistance.ScoreDao;
+import com.callor.score.persistence.ScoreDao;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,7 +28,10 @@ public class ScoreDaoImplV1 implements ScoreDao{
 	public List<ScoreVO> selectAll() {
 		// TODO Auto-generated method stub
 		String sql = "select * from tbl_score ";
-		return null;
+		
+		List<ScoreVO> scList = jdbcTemplate.query(sql, new BeanPropertyRowMapper<ScoreVO>(ScoreVO.class));
+		
+		return scList;
 	}
 
 	@Override

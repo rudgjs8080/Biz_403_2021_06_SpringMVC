@@ -1,4 +1,4 @@
-package com.callor.score.persistance;
+package com.callor.score.persistence;
 
 import java.util.List;
 

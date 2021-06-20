@@ -1,4 +1,4 @@
-package com.callor.score.persistance.impl;
+package com.callor.score.persistence.impl;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.callor.score.model.StudentVO;
-import com.callor.score.persistance.StudentDao;
+import com.callor.score.persistence.StudentDao;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,7 +34,7 @@ public class StudentDaoImplV1 implements StudentDao {
 		List<StudentVO> stuList = jdbcTemplate.query(sql, new BeanPropertyRowMapper<StudentVO>(StudentVO.class));
 		
 		
-		return null;
+		return stuList;
 	}
 	@Override
 	public StudentVO findById(String num) {
