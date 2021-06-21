@@ -27,6 +27,7 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		
 		List<ListDTO> liList = listService.selectAll();
+		log.debug("확인 : " + liList.toString());
 		model.addAttribute("LI", liList);
 		
 		

@@ -4,11 +4,9 @@
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>나의 홈페이지</title>
-</head>
+<%@ include file="/WEB-INF/views/include/head.jspf"%>
 <body>
-	<h1>student.list</h1>
+	<%@ include file="/WEB-INF/views/include/header.jspf"%>
+	
 </body>
 </html>

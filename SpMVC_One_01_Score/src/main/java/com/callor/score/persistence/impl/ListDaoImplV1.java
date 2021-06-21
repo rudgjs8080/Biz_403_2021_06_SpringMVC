@@ -30,7 +30,7 @@ public class ListDaoImplV1 implements ListDao{
 		String sql = " select * from 성적정보";
 		
 		List<ListDTO> liList = jdbcTemplate.query(sql, new BeanPropertyRowMapper<ListDTO>(ListDTO.class));
-		
+		log.debug("확인2 : " + liList);
 		
 		return liList;
 	}

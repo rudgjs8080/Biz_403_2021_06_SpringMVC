@@ -15,20 +15,18 @@ import lombok.extern.slf4j.Slf4j;
 @Service("listServiceV1")
 public class ListServiceImplV1 implements ListService{
 
-	protected final ListDaoImplV1 listDaoImplV1;
-	public ListServiceImplV1(ListDaoImplV1 listDaoImplV1) {
+	protected final ListDao listDao;
+	
+	public ListServiceImplV1(ListDao listDao) {
 		// TODO Auto-generated constructor stub
-		
-		this.listDaoImplV1 = listDaoImplV1;
+		this.listDao = listDao;
 	}
-	
-	
 	@Override
 	public List<ListDTO> selectAll() {
 		// TODO Auto-generated method stub
 		
-		listDaoImplV1.selectAll();
-		return null;
+		log.debug("확인3 : " + listDao.selectAll().toString());
+		return listDao.selectAll();
 	}
 
 }
