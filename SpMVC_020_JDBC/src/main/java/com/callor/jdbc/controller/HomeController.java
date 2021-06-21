@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.callor.jdbc.persistance.BookDao;
+import com.callor.jdbc.service.AuthorService;
+import com.callor.jdbc.service.CompService;
+import com.callor.jdbc.service.HomeService;
 import com.callor.jdbc.service.RentService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -34,8 +37,10 @@ public class HomeController {
 		 */
 		// protected final BookDao bookDao;
 	protected final RentService rentService;
-	public HomeController(RentService rentService) {
+	protected final HomeService homeService;
+	public HomeController(RentService rentService, HomeService homeService) {
 		this.rentService = rentService;
+		this.homeService = homeService;
 	}
 	/*
 	 * 사용자에게 Response를 할 때
@@ -65,12 +70,15 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 
-		// ???
+		homeService.dashBoard(model);
+		
 		/*
 		 * 매개변수로 전달받은 Model class type변수인 model에
-		 * 속성을 하나 추가한다
-		 * 속성의 이름은 user이며, 값은 user_name에 담긴 값이다
+		 * 속성을 하나 추가한다.
+		 * 속성의 이름은 user 이며, 값은 user_name에 담긴 값이다
 		 * 
+		 * Model 객체에 담긴 속성(변수)들은 jsp파일과 Rendering이 완료되면
+		 * 메모리에서 삭제된다.
 		 */
 		model.addAttribute("user", user_name);
 		

@@ -45,16 +45,16 @@ public class CompDaoImplV1 implements CompDao{
 
 		String sql = "select * from tbl_company";
 		List<CompanyVO> compList = jdbcTemplate.query(sql, new BeanPropertyRowMapper<CompanyVO>(CompanyVO.class));
-		//log.debug("Comp Select {} ", compList.toString());
-		return null;
+		log.debug("Comp Select {} ", compList.toString());
+		return compList;
 	}
 
 	@Override
-	public CompanyVO findById(String pk) {
+	public CompanyVO findById(String cp_code) {
 		// TODO Auto-generated method stub
 		String sql = "select * from tbl_company ";
 		sql += "where cp_code = ? ";
-		Object[] params = new Object[] {pk};
+		Object[] params = new Object[] {cp_code};
 		CompanyVO vo = (CompanyVO) jdbcTemplate.query(sql,params, new BeanPropertyRowMapper<CompanyVO>(CompanyVO.class));
 		return vo;
 	}
@@ -117,15 +117,18 @@ public class CompDaoImplV1 implements CompDao{
 	}
 
 	@Override
-	public List<CompanyVO> findByCName(String name) {
-		// TODO Auto-generated method stub
+	public List<CompanyVO> findByCName(String cname) {
+		// TODO 출판사 이름으로 검색
 		
 		String sql = "select * from tbl_company ";
-		sql += "where cp_title = ? ";
-		Object[] params = new Object[] {name};
-		CompanyVO vo = (CompanyVO) jdbcTemplate.query(sql,params, new BeanPropertyRowMapper<CompanyVO>(CompanyVO.class));
+		sql += "where cp_title like concat('%',?, '%') ";
 		
-		return null;
+		// select 수행한 후 각각의 데이터를 CompanyVO에 담고
+		// List에 add 하여 return 한 후 cpList에 받기
+		Object[] params = new Object[] {cname};
+		List<CompanyVO> cpList = jdbcTemplate.query(sql,params, new BeanPropertyRowMapper<CompanyVO>(CompanyVO.class));
+		
+		return cpList;
 	}
 
 

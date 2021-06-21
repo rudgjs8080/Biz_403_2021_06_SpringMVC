@@ -24,7 +24,9 @@ section#main_sec article ul {
 
 section#main_sec article li {
 	margin: 0 20px;
-	padding: 0 1px;
+	padding: 0 7px;
+	
+	
 }
 
 section#ad_sec {
@@ -47,7 +49,9 @@ section#ad_sec article {
 	background-size가 작동되지 않더라
 	해결방법 : include_header.jspf 참조*/
 }
-
+section#login form{
+	z-index: 500;
+}
 
 
 /*

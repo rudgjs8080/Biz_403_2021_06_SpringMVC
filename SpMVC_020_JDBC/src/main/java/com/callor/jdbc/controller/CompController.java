@@ -1,5 +1,7 @@
 package com.callor.jdbc.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -15,56 +17,67 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping(value="/comp")
+@RequestMapping(value = "/comp")
 public class CompController {
-	
+
 	protected final CompDao compDao;
 	protected final CompService compService;
+
 	public CompController(CompDao compDao, CompService compService) {
 		this.compDao = compDao;
 		this.compService = compService;
-		
+
 	}
-	@RequestMapping(value= {"/",""}, method=RequestMethod.GET)
+
+	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String list(HttpSession hSession, Model model) {
-		if(hSession.getAttribute("USERVO") == null) {
+		if (hSession.getAttribute("USERVO") == null) {
 			model.addAttribute("MSG", "LOGIN");
 			return "redirect:/member/login";
-			
+
 		}
-		
+
+		List<CompanyVO> cpList = compService.selectAll();
+		log.debug("출판사 정보 가져오기: {}" ,cpList.toString());
+		model.addAttribute("COMPS", cpList);
+		return "comp/list";
+	}
+	@RequestMapping(value="/list", method=RequestMethod.GET)
+	public String getList(Model model) {
+		List<CompanyVO> compList = compService.selectAll();
+		model.addAttribute("COMPS", compList);
 		return "comp/list";
 	}
 	
 	// localhost:8080/jdbc/comp/insert로 호출되는 함수
-	@RequestMapping(value="/insert" , method=RequestMethod.GET)
+	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public String insert() {
-		
-		
+
 		// WEB-INF/views/comp/input.jsp를 열어라
 		return "comp/input";
 	}
-	@RequestMapping(value="/insert", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insert(CompanyVO cmVO) {
-		
-		//log.debug("companyVO {}", cmVO.toString());
+
+		// log.debug("companyVO {}", cmVO.toString());
 		compService.insert(cmVO);
-		
+
 		return "redirect:/";
 	}
-	
-	
-	@RequestMapping(value="/update", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String update() {
-		
+
 		return "comp/input";
 	}
-	// @RequestParam("pk") ??  
-	@RequestMapping(value="/delete", method=RequestMethod.GET)
+
+	// @RequestParam("pk") ??
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String delete(String pk) {
-		
-		compDao.delete(pk); 
+
+		compDao.delete(pk);
 		return "redirect:/";
 	}
-	
+
 }

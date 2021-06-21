@@ -10,9 +10,15 @@ form#login_form {
 	width: 400px;
 	padding: 60px;
 	background-color: #191919;
+	border-radius: 40px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	tarnsform: translate(-50%, -50%);
 	text-align: center;
 	margin: 100px auto;
-	border-radius: 40px;
+	animation-name: aniTopDown;
+	animation-duration: 0.8s;
 }
 
 form#login_form h2 {
@@ -60,13 +66,30 @@ form#login_from button.btn_join {
 form#login_form button:hover {
 	background-color: #2ecc71;
 }
-form#login_form div.msg{
-	margin:5px auto;
+
+form#login_form div.msg {
+	margin: 5px auto;
 	border-radius: 15px;
 	background-color: red;
 	color: yellow;
 	font-size: 20px;
 	padding: 12px 15px;
+}
+
+@
+keyframes aniTopDown {
+	from { 
+	top:-300px;
+	opacity: 0;
+		}
+	to {
+	top: 50%;
+	opacity: 0;
+	}
+
+}
+div#modal {
+	display: block;
 }
 </style>
 <body>
@@ -124,8 +147,6 @@ document.querySelector("button.btn_login")
 	// 유효성 검사를 통과하면 서버로 전송하기
 	document.querySelector("form#login_form").submit();
 })
-
-
 
 </script>
 </html>

@@ -21,12 +21,15 @@ public class BookController {
 	public String books(HttpSession hSession, Model model) {
 		Object obj = hSession.getAttribute("USERVO");
 		UserVO userVO = (UserVO)obj;
+		
 		// USERVO 정보가 없으면
+		/*
 		if(userVO == null) {
 			// Login 화면으로 jump
 			model.addAttribute("MSG", "LOGIN");
 			return "redirect:/member/login";
-		}
+		}*/
+		
 		return "books/list";
 	}
 	
