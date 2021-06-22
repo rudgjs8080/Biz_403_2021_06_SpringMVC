@@ -4,7 +4,7 @@
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" contetnt="width=device-width, initial-scal=1" />
+<meta name="viewport" content="width=device-width, initial-scal=1" />
 <title>대한 고교 성적처리</title>
 <link href="${rootPath}/static/css/main_layout.css?ver=2021-06-18-001"
 rel="stylesheet"/>

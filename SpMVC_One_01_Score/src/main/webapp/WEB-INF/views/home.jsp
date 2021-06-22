@@ -18,18 +18,40 @@
 			<td>평균</td>
 		</tr>
 
-		<tr class="list_tr">
-			<c:forEach items="${LI}" var="LI">
-				<td>${LI.st_num }</td>
+		<c:forEach items="${LI}" var="LI" >
+			<tr data-num="${LI.st_num}" class="list_tr">
+				<td>${LI.st_num}</td>
 				<td>${LI.st_name}</td>
 				<td>${LI.st_dept}</td>
 				<td>${LI.st_grade}</td>
 				<td>${LI.st_subjects}</td>
 				<td>${LI.sc_score_sum}</td>
 				<td>${LI.sc_score_avg}</td>
-			</c:forEach>
-		</tr>
+			</tr>
+		</c:forEach>
+
 	</table>
 </body>
+<script>
 
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () =>{
+    document.querySelector("tr.list_tr").addEventListener("click", (e) =>{
+        let tagName = e.target.tagName;
+        if(tagName == "TD"){
+            let urlPath = `${rootPath}`;
+            let tr = e.target.closest("TR").dataset;
+            if(tr.insert =="1"){
+            	console.log("tr.insert: " + tr.insert)
+            	return false;
+            } else {
+            	let td_num = tr.num
+            	console.log("td_num : " + td_num)
+            	location.href ="${rootPath}/student"
+            }
+        }
+    })
+})
+</script>
 </html>

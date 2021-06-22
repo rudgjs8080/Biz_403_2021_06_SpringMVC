@@ -89,10 +89,14 @@ document.addEventListener("click", (e) =>{
 	
 	if(tagName === "TD"){
 		let parentTag = target.closest("TR")
+		//console.log("target.closest : " + parentTag)
 		let parentClassName = parentTag.className
+		//console.log("parentTag.className : " + parentClassName)
+		// 위의 두 줄의 코드는 "search_comp"를 찾아내기 위한 코드
 		if(parentClassName === "search_comp"){
 			//let ccode = parentTag.dataset.ccode
 			let tds = parentTag.childNodes
+			//console.log("tds : " + tds)
 			let ccode = tds[1].textContent
 			let ctitle = tds[3].textContent
 			let cceo = tds[5].textContent
@@ -102,11 +106,12 @@ document.addEventListener("click", (e) =>{
 			msg += cceo + ", ";
 			msg += ctel + ", ";
 			//console.log(ccode)
-			
+			//console.log("msg: " + msg)
 			
 			document.querySelector("input#bk_ccode").value = ccode
 			document.querySelector("span#cp_title").innerText = msg
-			
+			// input 박스에 선택한 ccode 값을 넣어주고
+			// span 안에 msg를 넣어준다 
 		} else if(parentClassName === "search_author"){
 			let tds = parentTag.childNodes
 			let acode = tds[1].textContent
