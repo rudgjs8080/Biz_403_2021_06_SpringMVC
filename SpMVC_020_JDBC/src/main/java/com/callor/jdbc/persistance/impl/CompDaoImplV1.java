@@ -137,11 +137,11 @@ public class CompDaoImplV1 implements CompDao{
 		// TODO Auto-generated method stub
 		
 		String sql = "select * from tbl_company ";
-		sql += "where cp_tel = ? ";
+		sql += "where cp_tel like concat('%',?, '%')";
 		Object[] params = new Object[] {tel};
-		CompanyVO vo = (CompanyVO) jdbcTemplate.query(sql,params, new BeanPropertyRowMapper<CompanyVO>(CompanyVO.class));
+		List<CompanyVO> compList= jdbcTemplate.query(sql,params, new BeanPropertyRowMapper<CompanyVO>(CompanyVO.class));
 		
-		return null;
+		return compList;
 	}
 
 
@@ -149,10 +149,10 @@ public class CompDaoImplV1 implements CompDao{
 	public List<CompanyVO> findByCeo(String ceo) {
 		// TODO Auto-generated method stub
 		String sql = "select * from tbl_company ";
-		sql += "where cp_ceo = ? ";
+		sql += "where cp_ceo like concat('%',?, '%') ";
 		Object[] params = new Object[] {ceo};
-		CompanyVO vo = (CompanyVO) jdbcTemplate.query(sql,params, new BeanPropertyRowMapper<CompanyVO>(CompanyVO.class));
-		return null;
+		List<CompanyVO> compList = jdbcTemplate.query(sql,params, new BeanPropertyRowMapper<CompanyVO>(CompanyVO.class));
+		return compList;
 	}
 
 

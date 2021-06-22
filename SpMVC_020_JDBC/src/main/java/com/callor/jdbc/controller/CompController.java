@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.callor.jdbc.model.CompanyVO;
 import com.callor.jdbc.persistance.CompDao;
@@ -42,11 +43,20 @@ public class CompController {
 		model.addAttribute("COMPS", cpList);
 		return "comp/list";
 	}
-	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public String getList(Model model) {
-		List<CompanyVO> compList = compService.selectAll();
+	@RequestMapping(value="/search", method=RequestMethod.GET)
+	public String getList(@RequestParam(name="cp_title", required = false, defaultValue = "") String searchText, Model model) {
+		
+		log.debug("cp_title{}",searchText);
+		List<CompanyVO> compList = null;
+		if(searchText == null || searchText.trim().equals("")) {
+			compList = compService.selectAll();
+			
+		} else {
+			compList = compService.findByNameAndTel(searchText);
+		}
+	
 		model.addAttribute("COMPS", compList);
-		return "comp/list";
+		return "comp/search";
 	}
 	
 	// localhost:8080/jdbc/comp/insert로 호출되는 함수

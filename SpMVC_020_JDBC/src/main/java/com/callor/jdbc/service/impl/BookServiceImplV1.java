@@ -2,6 +2,7 @@ package com.callor.jdbc.service.impl;
 
 import java.util.List;
 
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import com.callor.jdbc.model.BookVO;
@@ -29,12 +30,26 @@ import lombok.RequiredArgsConstructor;
 public class BookServiceImplV1 implements BookService{
 
 	protected final BookDao bookDao;
+	protected final JdbcTemplate jdbcTemplate;
 	
 	@Override
 	public List<BookVO> selectAll() {
 		// TODO Auto-generated method stub
 		
 		return bookDao.selectAll();
+	}
+
+	@Override
+	public Integer insert(BookVO vo) {
+		// TODO Auto-generated method stub
+		
+		String sql = " insert into tbl_books ";
+		sql += "(bk_isbn, bk_title, bk_ccode, bk_acode, bk_date, bk_price, bk_pages)";
+		sql += " values(?, ?, ?, ?, ?, ?, ?)";
+		
+		Object[] params = new Object[] {vo.getBk_isbn(),vo.getBk_title(), vo.getBk_ccode(),vo.getBk_acode(),vo.getBk_date(),vo.getBk_price(),vo.getBk_pages()};
+		
+		return jdbcTemplate.update(sql, params);
 	}
 
 }
