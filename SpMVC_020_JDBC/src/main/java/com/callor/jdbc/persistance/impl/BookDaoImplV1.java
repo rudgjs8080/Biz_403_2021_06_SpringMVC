@@ -29,9 +29,20 @@ public class BookDaoImplV1 implements BookDao {
 	public List<BookVO> selectAll() {
 		// TODO Auto-generated method stub
 
-		String sql = "select bk_isbn, bk_title, C.cp_title as bk_ccode, A.au_name as bk_acode, bk_date, bk_price, bk_pages"
-				+ " from tbl_books B left join tbl_author A on B.bk_acode = A.au_code left"
-				+ " join tbl_company C on B.bk_ccode = C.cp_code ";
+		String sql = " SELECT ";
+		sql += " bk_isbn,";
+		sql += " bk_title,";
+		sql += " CONCAT( '(', bk_ccode , ')', C.cp_title ) as bk_ccode ,";
+		sql += " A.au_name as bk_acode ,";
+		sql += " bk_date,";
+		sql += " bk_price,";
+		sql += " bk_pages ";
+		sql += " FROM tbl_books B";
+		sql += "    LEFT JOIN tbl_author A ";
+		sql += "		ON B.bk_acode = A.au_code ";
+		sql += "    LEFT JOIN tbl_company C ";
+		sql += "		ON B.bk_ccode = C.cp_code ";
+		
 		
 		/*
 		 * jdbcTemplate.query(sql, return type)

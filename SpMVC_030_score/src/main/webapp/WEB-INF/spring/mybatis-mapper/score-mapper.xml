@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- select 명령문을 실행핳는데 selectAll을 실행하면 studentVO를 가져와 데이터를 만들어 달라? -->
+<!-- insert : 만약 누군가 Dao에 있는 insert를 호출하면서 매개변수로 StudentVO로 보내면 값을 세팅해서 sql 
+	명령문을 만들어라 -->
+<mapper namespace="com.callor.score.dao.ScoreDao">
+	<select id="selectAll" resultType="ScoreVO">
+		SELECT * FROM tbl_score
+	</select>
+	<select id="findById" resultType="ScoreVO">
+		SELECT * FROM tbl_score where
+		sc_stnum = #{sc_stnum}
+	</select>
+	<select id="selectViewAll" resultType="ScoreDTO">
+		SELECT sc_seq, sc_stnum, ST.st_name sc_stname, sc_sbcode, SB.sb_name sc_sbname, sc_score 
+		from tbl_score SC
+			left join tbl_student ST
+				on SC.sc_stnum = ST.st_num
+			left join tbl_subject SB
+				on SC.sc_sbcode = SB.sb_code
+		order by sc_stnum, sc_sbcode
+	</select>
+	<insert id="insert" parameterType="ScoreVO">
+		insert into
+		tbl_score(sc_stname, sc_sbcode,
+		sc_score)
+		values(#{sc_stnum},#{sc_sbcode},#{sc_score})
+	</insert>
+	<update id="update" parameterType="ScoreVO">
+		update tbl_score set
+		sc_stnum = #{sc_stnum},
+		sc_sbcode= #{sc_sbcode},
+		sc_score = #{sc_score}
+		where sc_stnum =#{sc_stnum}
+
+	</update>
+	<delete id="delete">
+		DELETE FROM tbl_score where sc_stnum = #{sc_stnum}
+	</delete>
+</mapper>

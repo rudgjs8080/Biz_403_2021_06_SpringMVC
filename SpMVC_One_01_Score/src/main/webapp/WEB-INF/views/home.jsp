@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () =>{
             	return false;
             } else {
             	let td_num = tr.num
+            	alert(td_num)
             	console.log("td_num : " + td_num)
             	location.href ="${rootPath}/student"
             }

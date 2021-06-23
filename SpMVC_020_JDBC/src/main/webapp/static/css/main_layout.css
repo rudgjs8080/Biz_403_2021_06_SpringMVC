@@ -13,6 +13,12 @@ body {
 	height: 100vh;
 }
 
+h1.page_title {
+	width: 90%;
+	/* top, right, bottom, left 순서*/
+	margin: 10px auto 0 auto;
+}
+
 section.main_sec {
 	flex: auto;
 	overflow: auto;
@@ -42,6 +48,13 @@ tag에 id 나 class를 부착하지 않고 지정하는 경우
 
 */
 table {
+	/*
+	css 2.1 적용 spec
+	table을 구성했을 때 ttd에 있는 text(content)의
+	길이가 변동되거나 할 때
+	table의 전체모양이 움찔거리는 현상을 
+	방지하는 속성*/
+	table-layout: fixed;
 	border-collapse: collapse;
 	border-spacing: 0;
 	width: 90%;
@@ -51,22 +64,55 @@ table {
 table th, td {
 	border-top: 1px solid #aaa;
 	padding: 5px 8px;
+	/* text font 크기에 따라 높이를 고정하는 속성*/
+	height: 2rem;
 }
 
 table td {
 	margin-left: 30px;
 	text-align: left;
-	max-width: 0;
 	padding-left: 10px;
-	overflow: hidden;
+	
+}
+/*
+td의 text가 넘칠경우 ellipsis를 적용하는데
+단순히 td에 적용하면 이웃하는 다른 td의 글자와 겹치는 현상이 발생
+이것을 방지하기 위하여 속성 설정
+*/
+table td span{
+	position: relative;
+	height: 1.2rem;
+	display: inline-block;
+	margin-top: 5px;
+}
+
+table td label.truncate{
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	overflow: hidden;
+	max-width: 80px;
+	text-overflow: ellipsis;
+	cursor: inherit;
+	display: inline-block;
 }
-
+/*
 table td:hover {
+	
 	overflow: visible;
 	text-overflow: inherit;
+	
+}
+*/
+
+table td:hover label.truncate {
+	
+	position: absolute;
+	max-width: none;
+	background-color: #aaa;
+	overflow: visible;
+	top: -6px;
+	padding: 5px 20px 5px 0;
+	z-index: 100;
 }
 
 table tr:last-child td {
@@ -126,38 +172,39 @@ div.btn_box {
 
 div#modal {
 	position: fixed;
-	top:0;
-	left:0;
-	bottom:0;
-	right:0;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
 	background-color: black;
 	opacity: 0.5;
 	z-index: 100;
 	display: none;
 }
+
 div#modal span {
 	position: absolute;
 	display: inline-block;
-	top:30px;
+	top: 30px;
 	right: 30px;
 	font-size: 30px;
-	color:white;
+	color: white;
 	font-weight: 900;
 	border-radius: 50%;
-	padding:10px 20px;
-	transition:0.6s
+	padding: 10px 20px;
+	transition: 0.6s
 }
 
 div#modal span:hover {
 	background-color: white;
 	cursor: pointer;
 }
+
 section.search_sec {
 	position: absolute;
-	top:50%;
+	top: 50%;
 	left: 50%;
-	transform: translate(-50%,-50%);
-	
+	transform: translate(-50%, -50%);
 	background-color: white;
 	opacity: 1;
 	width: 80%;
@@ -166,7 +213,6 @@ section.search_sec {
 	justify-content: center;
 	align-content: center;
 	overflow: auto;
-	
 	z-index: 100;
 }
 

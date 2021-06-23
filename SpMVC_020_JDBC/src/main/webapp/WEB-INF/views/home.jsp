@@ -34,15 +34,16 @@
 			<ul>
 				<c:choose>
 					<c:when test="${not empty BOOKS}">
-						<c:forEach var="index" begin="10" end="14">
-							<li>${BOOKS[index].bk_title}, ${BOOKS[index].bk_price}, ${BOOKS[index].bk_pages}</li>
+						<c:forEach var="index" begin="0" end="4">
+							<li>${BOOKS[index].bk_title},&nbsp;&nbsp;
+								${BOOKS[index].bk_ccode},&nbsp;&nbsp; ${BOOKS[index].bk_acode}</li>
 						</c:forEach>
 					</c:when>
 					<c:otherwise>
 						<li>도서정보 없음</li>
-						
 					</c:otherwise>
 				</c:choose>
+
 			</ul>
 		</article>
 		<article>
