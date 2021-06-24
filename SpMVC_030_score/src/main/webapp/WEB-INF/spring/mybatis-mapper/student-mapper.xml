@@ -6,7 +6,7 @@
 <!-- select 명령문을 실행핳는데 selectAll을 실행하면 studentVO를 가져와 데이터를 만들어 달라? -->
 <!-- insert : 만약 누군가 Dao에 있는 insert를 호출하면서 매개변수로 StudentVO로 보내면 값을 세팅해서 sql 
 	명령문을 만들어라 -->
-<mapper namespace="com.callor.score.dao.StudentDao">
+<mapper namespace="com.callor.score.dao.ext.StudentDao">
 	<select id="selectAll" resultType="StudentVO">
 		SELECT * FROM tbl_student
 	</select>
