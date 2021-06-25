@@ -13,7 +13,7 @@ public interface GenericDao<VO, PK> {
 	
 	public List<VO> selectAll();
 	
-	public List<VO> findById(PK pk);
+	public VO findById(PK pk);
 	
 	public int insert(VO vo);
 	public int update(VO vo);

@@ -115,6 +115,36 @@ button:hover {
 	box-shadow: 2px 2px 2px gray;
 	cursor: pointer;
 }
+button.save {
+	background-color: blue;
+	color: white;
+}
+
+button.reset {
+	background-color: olive;
+	color: white;
+}
+
+button.list {
+	background-color: green;
+	color: white;
+}
+button.home{
+	background-color: orange;
+	color: white;
+}
+button.update {
+background-color: red;
+color: white;
+}
+button.delete {
+background-color: purple;
+color: white;
+}
+button.insert{
+background-color: brown;
+color:white;
+}
 
 form {
 	width: 90%;
@@ -146,27 +176,14 @@ form input {
 	outline: 0;
 	border: #aaa;
 	border-radius: 50px;
-	]
+	
 }
 
 form input:hover {
 	background: #bbb;
 }
 
-form button.save {
-	background-color: blue;
-	color: white;
-}
 
-form button.reset {
-	background-color: olive;
-	color: white;
-}
-
-form button.list {
-	background-color: green;
-	color: white;
-}
 </style>
 
 <meta charset="UTF-8">
@@ -181,7 +198,7 @@ form button.list {
 
 	<section id="main_sec">
 		<c:choose>
-			<c:when test="${BODY == 'SCORE_VIEW' }">
+			<c:when test="${BODY == 'SCORE_VIEW'}">
 				<%@ include file="/WEB-INF/views/score/list.jsp"%>
 			</c:when>
 			<c:when test="${BODY =='STUDENT_LIST'}">
@@ -189,6 +206,9 @@ form button.list {
 			</c:when>
 			<c:when test="${BODY == 'STUDENT_INPUT'}">
 				<%@ include file="/WEB-INF/views/student/input.jsp"%>
+			</c:when>
+			<c:when test="${BODY == 'STUDENT_DETAIL'}">
+				<%@ include file="/WEB-INF/views/student/detail.jsp"%>
 			</c:when>
 			<c:otherwise>
 				<%@ include file="/WEB-INF/views/main.jsp"%>
@@ -212,7 +232,7 @@ let st_list = document.querySelector("button.student.list");
 let st_insert =document.querySelector("button.student.insert");
 let home = document.querySelector("button.student.home");
 
-//std_list가 있으면
+//stu_list가 있으면
 if(st_list) {
 	st_list.addEventListener("click",(e)=>{
 			location.href = "${rootPath}/student"
@@ -229,5 +249,22 @@ if(home) {
 	})
 	
 }
+
+let table = document.querySelector("table.detail")
+if(table){
+	table.addEventListener("click", (e) =>{
+		let target = e.target
+		let tagName = target.tagName
+		if(tagName=== "TD"){
+			let tr = target.closest("TR")
+			let stNum = tr.dataset.stnum
+			
+			location.href = "${rootPath}/student/detail?st_num=" + stNum
+			
+			alert(stNum)
+		}
+	})
+}
+
 </script>
 </html>

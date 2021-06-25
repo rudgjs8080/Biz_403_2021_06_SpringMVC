@@ -7,6 +7,16 @@
 <!-- insert : 만약 누군가 Dao에 있는 insert를 호출하면서 매개변수로 StudentVO로 보내면 값을 세팅해서 sql 
 	명령문을 만들어라 -->
 <mapper namespace="com.callor.score.dao.ext.ScoreDao">
+	<select id="scoreCount" resultType="Integer">
+		select count(*) from tbl_score
+		where sc_stnum = #{sc_stnum}
+		
+	</select>
+	<select id="scoreSum" resultType="Integer">
+		select sum(sc_score) from tbl_score
+		where sc_stnum = #{sc_stnum}
+			
+	</select>
 	<select id="selectAll" resultType="ScoreVO">
 		SELECT * FROM tbl_score
 	</select>
@@ -15,13 +25,26 @@
 		sc_stnum = #{sc_stnum}
 	</select>
 	<select id="selectViewAll" resultType="ScoreDTO">
-		SELECT sc_seq, sc_stnum, ST.st_name sc_stname, sc_sbcode, SB.sb_name sc_sbname, sc_score 
+		SELECT sc_seq, sc_stnum,
+		ST.st_name sc_stname, sc_sbcode, SB.sb_name sc_sbname, sc_score
 		from tbl_score SC
-			left join tbl_student ST
-				on SC.sc_stnum = ST.st_num
-			left join tbl_subject SB
-				on SC.sc_sbcode = SB.sb_code
+		left join tbl_student ST
+		on SC.sc_stnum = ST.st_num
+		left join tbl_subject SB
+		on SC.sc_sbcode = SB.sb_code
 		order by sc_stnum, sc_sbcode
+	</select>
+	<select id="selectSubjectAndScore" resultType="SubjectAndScoreDTO">
+		select 
+				SB.sb_code as ss_code,
+		 		SB.sb_name as ss_stname, 
+		 		SB.sb_prof as ss_prof,
+				SC.sc_stnum as ss_stnum, 
+				SC.sc_score as ss_score
+		from tbl_subject SB
+		left join tbl_score SC
+		on SC.sc_sbcode = SB.sb_code
+		and SC.sc_stnum = #{st_num} limit 5
 	</select>
 	<insert id="insert" parameterType="ScoreVO">
 		insert into
@@ -29,13 +52,19 @@
 		sc_score)
 		values(#{sc_stnum},#{sc_sbcode},#{sc_score})
 	</insert>
-	<update id="update" parameterType="ScoreVO">
-		update tbl_score set
-		sc_stnum = #{sc_stnum},
-		sc_sbcode= #{sc_sbcode},
+	<insert id="insertOrUpdate">
+		INSERT INTO tbl_score(sc_stnum, sc_sbcode, sc_score)
+		VALUES(#{st_num},#{sc_sbcode}, #{sc_score})
+		ON DUPLICATE KEY UPDATE 
 		sc_score = #{sc_score}
-		where sc_stnum =#{sc_stnum}
-
+	</insert>
+	
+	<update id="update" parameterType="ScoreVO">
+		UPDATE tbl_score SET
+			sc_stnum = #{sc_stnum},
+			sc_sbcode = #{sc_sbcode },
+			sc_score= #{sc_score},
+		WHERE sc_seq = #{sc_num}
 	</update>
 	<delete id="delete">
 		DELETE FROM tbl_score where sc_stnum = #{sc_stnum}
