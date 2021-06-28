@@ -47,7 +47,7 @@ public class HomeController {
 		
 		log.debug("Contoller {} ", stList.toString());
 
-		return "redirect:/score";
+		return "redirect:/student";
 	}
 	
 	@ResponseBody

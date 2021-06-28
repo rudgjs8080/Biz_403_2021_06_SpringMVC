@@ -62,7 +62,7 @@ public class StudentController {
 		
 		String ret = stService.detail(model, st_num);
 		// model.addAttribute("SSLIST", ssList);
-		log.debug("코로나 : " + st_num);
+		log.debug("st_num : " + st_num);
 		model.addAttribute("BODY", "STUDENT_DETAIL");
 		return "home";
 		
@@ -73,15 +73,25 @@ public class StudentController {
 	//public String detail(@RequestParam(name="subject") List<String> subject,
 	//						@RequestParam(name="score") List<String> score) {
 	
-	public String detail(ScoreInputVO scInputVO) {
+	public String detail(ScoreInputVO scInputVO, Model model) {
 		//log.debug("Subject : {} " ,subject.toString());
 		//log.debug("Score: {}", score.toString());
 		
 		log.debug("Score Input {}", scInputVO.toString());
 		
 		String ret = stService.scoreInput(scInputVO);
+		String st_num = scInputVO.getSt_num();
 		
-		return "home";
+		/*
+		 * redirect를 수행할 때 query string을 보내고 싶으면
+		 * 해당 변수와 값을 model에 속성(Attribute)로 추가(add)
+		 * 
+		 * "redirect:/student/detail?st_num=" + st_num
+		 * 같이 사용하지 않아도 된다 
+		 */
+		model.addAttribute("st_num",st_num);
+		
+		return "redirect:/student/detail";
 		
 	}
 	
