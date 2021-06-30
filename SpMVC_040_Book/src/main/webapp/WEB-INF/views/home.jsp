@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,11 +19,18 @@ p b {
 	color: blue;
 }
 
+body {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
 nav#main_nav {
-	background-color: #03CF5D;
+	background-color: rgba(0, 255, 0, 0.7);
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-size: 100% 100%;
 }
 
 nav#main_nav form {
@@ -38,24 +46,65 @@ nav#main_nav input {
 	border-radius: 10px;
 }
 
+nav#main_nav select {
+	padding: 8px;
+	width: 15%;
+	border-radius: 10px;
+}
+
 section.content_box {
+	flex: 1;
 	border: 1px solid green;
 	padding: 12px 16px;
 	display: flex;
 	flex-wrap: wrap;
+	background-size: 100% 100%;
+	overflow: auto;
+	/*
+	검색 결과가 표시되는 영역을 scroll 지정하고
+	상단의 검색창(nav)은 화면에 고정하기
+	
+	1. body 에 display: flex, flex-direction : column, height: 100vh
+	2. 검색결과창에 flex: 1, overflow: auto
+	*/
 }
 
 section.content_box div.content {
-	border: 1px solid blue;
+	border: 1px solid yellowgreen;
 	margin: 5px auto;
 	display: flex;
 	width: 30%;
 	height: 30vh;
+	overflow: auto;
+	transition: 0.5s;
+}
+
+section.content_box div.content::-webkit-scrollbar {
+	opacity: 0;
+	width: 1px;
+}
+
+section.content_box div.content::-webkit-scrollbar-thumb, section.content_box div.content::-webkit-scrollbar-track
+	{
+	background-color: transparent;
+	transition: 3s;
+}
+
+section.content_box div.content:hover::-webkit-scrollbar {
+	opacity: 1;
+	width: 1px;
+}
+
+section.content_box div.content:hover::-webkit-scrollbar-thumb {
+	opacity: 1;
+	width: 1px;
+	background-color: blue;
 }
 
 section.content_box div.content img {
 	flex: 1;
-	
+	width: 30%;
+	height: 50%;
 }
 
 section.content_box div.content div {
@@ -65,9 +114,11 @@ section.content_box div.content div {
 
 @media ( min-width :1200px) {
 	section.content_box div.content {
-		width: 20%;
+		width: 18%;
+		margin: 5px auto;
 	}
 }
+
 @media ( max-width :700px) {
 	section.content_box div.content {
 		width: 95%;
@@ -85,27 +136,49 @@ a:hover {
 </head>
 <body>
 	<nav id="main_nav">
+	<c:if test="${CAT == 'BOOK'}">
+		<c:set var="pHolder" value="도서 검색어"/>
+	</c:if>
+	<c:if test="${CAT == 'MOVIE'}">
+		<c:set var="pHolder" value="영화 검색어"/>
+	</c:if>
+	<c:if test="${CAT == 'NEWS'}">
+		<c:set var="pHolder" value="뉴스 검색어"/>
+	</c:if>
+	
+		<select name="category">
+			<option value="BOOK"<c:if test="${CAT == 'BOOK'}">selected="selected"</c:if>>도서검색</option>
+			<option value="MOVIE"<c:if test="${CAT == 'MOVIE'}">selected="selected"</c:if>>영화검색</option>
+			<option value="NEWS"<c:if test="${CAT == 'NEWS'}">selected="selected"</c:if>>뉴스검색</option>
+
+		</select>
 		<form>
-			<input name="search" placeholder="도서명을 입력 후 Enter">
+			<input name="search" placeholder="${pHolder}를 입력후 Enter...">
 		</form>
 	</nav>
 	<section class="content_box">
-		<c:forEach items="${BOOKS}" var="BOOK">
-			<div class="content">
-				<div>
-					<img src="${BOOK.image}">
-				</div>
-				<p class="title">
-					<a href="${BOOK.link}" target="_NEW">${BOOK.title}</a>
-				</p>
-				<p class="desc">${BOOK.description}</p>
-				<p class="author">
-					<strong>저자 : </strong>${BOOK.author}</p>
-				<p class="publisher">
-					<strong>출판사 : </strong>${BOOK.publisher}</p>
-					<button class="insert">내 서재등록</button>
-			</div>
-		</c:forEach>
+		<%@ include file="/WEB-INF/views/book_list.jsp"%>
+		<%@ include file="/WEB-INF/views/news_list.jsp"%>
+		<%@ include file="/WEB-INF/views/movie_list.jsp"%>
+
 	</section>
+
 </body>
+<script>
+let category = document.querySelector("select[name='category']") 
+
+category.addEventListener("change", (e) =>{
+	let value = category.value
+	// alert(value)
+	// location.href = "${rootPath}/?category=" + value
+	location.href = "${rootPath}/naver/" + value
+	
+	
+	
+})
+</script>
+
+
+
+
 </html>

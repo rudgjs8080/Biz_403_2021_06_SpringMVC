@@ -23,6 +23,7 @@
 	
 	<context:component-scan base-package="com.callor.book.controller" />
 	<context:component-scan base-package="com.callor.book.service.impl" />
+	<context:component-scan base-package="com.callor.book.model" />
 	
 	
 	
