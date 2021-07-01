@@ -40,7 +40,7 @@
 		지정하기 tx:annotation-driven annotation을 통해서 tx를 관리하겠다 -->
 	 
 	<mybatis-spring:scan
-		base-package="com.callor.book.dao" /> 
+		base-package="com.callor.book.dao.ext" /> 
 		
 	<tx:annotation-driven />
 	<bean id="transactionManager"
