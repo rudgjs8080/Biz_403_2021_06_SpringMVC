@@ -1,7 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page
+	language="java"
+	contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<%@ taglib
+	uri="http://java.sun.com/jsp/jstl/core"
+	prefix="c"%>
+<c:set
+	var="rootPath"
+	value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 <html>
@@ -132,39 +138,77 @@ a {
 a:hover {
 	color: green;
 }
+
+table {
+	width: 95%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin:0 auto;	
+}
+
+th, td {
+	white-space: nowrap;
+	padding: 15px 12px;
+	border-top: 1px solid #ddd;
+}
+
+tr:last-child td {
+	border-bottom: 1px solid #ddd;
+}
 </style>
 </head>
 <body>
 	<nav id="main_nav">
-	<c:if test="${CAT == 'BOOK'}">
-		<c:set var="pHolder" value="도서 검색어"/>
-	</c:if>
-	<c:if test="${CAT == 'MOVIE'}">
-		<c:set var="pHolder" value="영화 검색어"/>
-	</c:if>
-	<c:if test="${CAT == 'NEWS'}">
-		<c:set var="pHolder" value="뉴스 검색어"/>
-	</c:if>
-	
+		<c:if test="${CAT == 'BOOK'}">
+			<c:set
+				var="pHolder"
+				value="도서 검색어" />
+		</c:if>
+		<c:if test="${CAT == 'MOVIE'}">
+			<c:set
+				var="pHolder"
+				value="영화 검색어" />
+		</c:if>
+		<c:if test="${CAT == 'NEWS'}">
+			<c:set
+				var="pHolder"
+				value="뉴스 검색어" />
+		</c:if>
+		<div>
+			<button
+				type="button"
+				class="btn_list">내 서재로 바로가기</button>
+		</div>
 		<select name="category">
-			<option value="BOOK"<c:if test="${CAT == 'BOOK'}">selected="selected"</c:if>>도서검색</option>
-			<option value="MOVIE"<c:if test="${CAT == 'MOVIE'}">selected="selected"</c:if>>영화검색</option>
-			<option value="NEWS"<c:if test="${CAT == 'NEWS'}">selected="selected"</c:if>>뉴스검색</option>
+			<option
+				value="BOOK"
+				<c:if test="${CAT == 'BOOK'}">selected="selected"</c:if>>도서검색</option>
+			<option
+				value="MOVIE"
+				<c:if test="${CAT == 'MOVIE'}">selected="selected"</c:if>>영화검색</option>
+			<option
+				value="NEWS"
+				<c:if test="${CAT == 'NEWS'}">selected="selected"</c:if>>뉴스검색</option>
 
 		</select>
 		<form>
-			<input name="search" placeholder="${pHolder}를 입력후 Enter...">
+			<input
+				name="search"
+				placeholder="${pHolder}를 입력후 Enter...">
 		</form>
 	</nav>
 	<section class="content_box">
 		<%@ include file="/WEB-INF/views/book_list.jsp"%>
 		<%@ include file="/WEB-INF/views/news_list.jsp"%>
 		<%@ include file="/WEB-INF/views/movie_list.jsp"%>
-
+		<c:if test="${not empty MY_BOOKS}">
+			<%@ include file="/WEB-INF/views/book/list_view.jsp"%>
+		</c:if>
 	</section>
 
 </body>
 <script>
+document.addEventListener("DOMContentLoaded", () => {
 let category = document.querySelector("select[name='category']") 
 
 category.addEventListener("change", (e) =>{
@@ -173,8 +217,15 @@ category.addEventListener("change", (e) =>{
 	// location.href = "${rootPath}/?category=" + value
 	location.href = "${rootPath}/naver/" + value
 	
+})
+document.querySelector("button.btn_list").addEventListener("click", (e)=>{
 	
-	
+	let urlPath = `${rootPath}`
+	urlPath += "/book/list"
+	location.href = urlPath
+})
+
+
 })
 </script>
 

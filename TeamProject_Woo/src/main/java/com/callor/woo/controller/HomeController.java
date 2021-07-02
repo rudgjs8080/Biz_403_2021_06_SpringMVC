@@ -45,4 +45,11 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/main")
+	public String main(Locale locale, Model model) {
+		
+		
+		return "main";
+	}
+	
 }
