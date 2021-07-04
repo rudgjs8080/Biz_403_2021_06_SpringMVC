@@ -248,7 +248,7 @@ figure.snip1200:hover div.w_data_o {
   background-size: cover;
    부모가 만들어준 높이를 cover 해라
   background-position: center center;
-}
+}*/
 article{
   
   flex : 1 1 => 원래는 1 1 0 넘치는 걸 줄여서 쓰는 속성
