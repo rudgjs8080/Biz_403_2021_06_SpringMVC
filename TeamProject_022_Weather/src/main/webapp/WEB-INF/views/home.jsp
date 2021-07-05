@@ -48,14 +48,14 @@ document.addEventListener("DOMContentLoaded", ()=>{
 		<!-- 
 		<li id="li_log">로그인</li>
 		<li id="li_join">회원가입</li> -->
-		<%@ include file="/WEB-INF/views/home_A.jsp"%>
+		<%@ include file="/WEB-INF/views/home_B.jsp"%>
 		</c:if>
 		<c:if test="${not empty MEMVO}">
 		<!--
 		<li id="li_logout">로그아웃</li>
 		<li id="li_mypage">${MEMVO.us_name}</li>
 		-->
-		
+		<%@ include file="/WEB-INF/views/home_A.jsp"%>
 		</c:if>		
 	</ul>
 </nav>

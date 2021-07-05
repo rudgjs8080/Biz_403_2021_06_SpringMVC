@@ -69,7 +69,14 @@ public class MemberController {
 	@RequestMapping(value="/join", method=RequestMethod.POST)
 	public String joinPost(MemberVO memVO,Model model) {
 		
-		mDao.insert(memVO);
+		try {
+			mDao.insert(memVO);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			return "/join";
+		}
 		
 		return "redirect:/";
 	}

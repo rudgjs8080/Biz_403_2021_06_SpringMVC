@@ -25,7 +25,7 @@ public class BookController {
 	protected final BookService bookService;
 	
 	@RequestMapping(value="/insert/{isbn}", method=RequestMethod.GET)
-	public String insert(@PathVariable("isbn") String isbn, Model model) throws IOException {
+	public String insert(@PathVariable("isbn") String isbn, Model model) throws Exception {
 		
 		log.debug("확인 ISBN : {} ", isbn);
 		

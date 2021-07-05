@@ -78,6 +78,6 @@ public abstract class NaverAbstractService<T> {
 
 	}
 
-	public abstract List<T> getNaverList(String jsonString);
+	public abstract List<T> getNaverList(String jsonString) throws Exception;
 
 }

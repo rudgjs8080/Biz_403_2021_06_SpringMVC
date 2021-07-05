@@ -23,18 +23,14 @@ document.addEventListener("DOMContentLoaded", ()=>{
 		if(tagName === "BUTTON") {
 			let menuText = e.target.textContent;
 			if (menuText === "login") {
-				document.location.href="${rootPath}";
+				document.location.href="${rootPath}/login";
 			} else if (menuText === "Join") {
 				document.location.href="${rootPath}/join"
 			}  else if (menuText === "logout") {
 				document.location.href="${rootPath}/logout"
-			} else if(menuText ==="MyPage"){
-				alert(${MEMVO.us_id})
-				document.location.href="${rootPath}/mypage=" + ${MEMVO.us_id}
 			}
 		}
 	})
-	
 	/*
 	document.querySelector("li#li_log").addEventListener("click",(e)=>{
 		document.location.href="${rootPath}/login"
@@ -49,17 +45,27 @@ document.addEventListener("DOMContentLoaded", ()=>{
 })
 </script>
 </head>
+
 <link
-	href="${rootPath}/static/css/home_A.css?ver=2021-07-02-001"
+	href="${rootPath}/static/css/home_B.css?ver=2021-07-05-001"
 	rel="stylesheet" />
 <body>
 	<div>
 		<div class="container">
 			<div class="item-1">
 				<div class="log_join">
-					<button class="logout">logout</button>
-					<button class="mypage">MyPage</button>
+					<label>ID</label>
+					<input
+						type="text"
+						placeholder="ID를 입력하세요" />
+					<label>PW</label>
+					<input
+						type="password"
+						placeholder="PW를 입력하세요" />
+					<button class="lg">login</button>
+					<button class="jo">Join</button>
 				</div>
+
 				<div class="header">
 					<h1 style="font-size: 90px; text-align: center">W O O</h1>
 					<h4 style="font-size: 32px; text-align: center">WEATHER & OOTD</h4>
@@ -123,23 +129,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
 					</div>
 					<figcaption class="o">
 						<div class="w_data_o">
-							<div class="w_data_div_o">
-								<img src="${rootPath}/static/images/formal-shirt.png" />
-							</div>
-							<div class="w_data_div_o">
-								<img src="${rootPath}/static/images/male-clothes.png" />
-							</div>
-							<div class="w_data_div_o">
-								<img src="${rootPath}/static/images/polo-shirt.png" />
-							</div>
-							<div class="w_data_div_o">
-								<img src="${rootPath}/static/images/polo-shirt.png" />
-							</div>
-							<div class="w_data_div_o">
-								<img src="${rootPath}/static/images/polo-shirt.png" />
-							</div>
-							<div class="w_data_div_o">
-								<img src="${rootPath}/static/images/polo-shirt.png" />
+
+							<div class="w_data_o_text">
+								OOTD 추천을 원하시면<br> 로그인을 해주세요
 							</div>
 
 						</div>
@@ -155,4 +147,16 @@ document.addEventListener("DOMContentLoaded", ()=>{
 		<div class="item-4">3</div>
 	</div>
 </body>
+<script>
+	/*
+	 let logout = document.querySelector("button.logout")
+	 let mypage = document.querySelector("button.mypage")
+
+	 if(logout){
+	 logout.addEventListener("click", (e) =>{
+	 location.href = "${rootPath}"
+	 })
+	 }
+	 */
+</script>
 </html>
