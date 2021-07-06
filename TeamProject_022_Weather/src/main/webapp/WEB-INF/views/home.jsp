@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 				<c:choose>
 					<c:when test="${empty MEMVO}">
-						<%@ include file="/WEB-INF/views/home_B.jsp"%>
+						
 					</c:when>
 					<c:otherwise>
 						<%@ include file="/WEB-INF/views/home_A.jsp"%>
