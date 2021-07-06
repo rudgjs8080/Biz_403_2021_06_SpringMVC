@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 		if(tagName === "BUTTON") {
 			let menuText = e.target.textContent;
 			if (menuText === "login") {
-				document.location.href="${rootPath}";
+				document.location.href="$redirect:/";
 			} else if (menuText === "Join") {
 				document.location.href="${rootPath}/join"
 			}  else if (menuText === "logout") {

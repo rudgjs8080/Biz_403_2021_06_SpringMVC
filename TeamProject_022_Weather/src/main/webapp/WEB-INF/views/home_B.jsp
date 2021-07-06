@@ -23,13 +23,16 @@ document.addEventListener("DOMContentLoaded", ()=>{
 		if(tagName === "BUTTON") {
 			let menuText = e.target.textContent;
 			if (menuText === "login") {
-				document.location.href="${rootPath}/login";
+				document.location.href="${rootPath}";
 			} else if (menuText === "Join") {
 				document.location.href="${rootPath}/join"
 			}  else if (menuText === "logout") {
 				document.location.href="${rootPath}/logout"
 			}
 		}
+	})
+	document.querySelector("button.lg").addEventListener("click",(e)=>{
+		document.querySelector("form#login").submit();
 	})
 	/*
 	document.querySelector("li#li_log").addEventListener("click",(e)=>{
@@ -53,19 +56,22 @@ document.addEventListener("DOMContentLoaded", ()=>{
 	<div>
 		<div class="container">
 			<div class="item-1">
-				<div class="log_join">
-					<label>ID</label>
-					<input
-						type="text"
-						placeholder="ID를 입력하세요" />
-					<label>PW</label>
-					<input
-						type="password"
-						placeholder="PW를 입력하세요" />
-					<button class="lg">login</button>
-					<button class="jo">Join</button>
-				</div>
-
+				<form
+					id="login"
+					method="POST">
+					<div class="log_join">
+						<label>ID</label>
+						<input
+							type="text"
+							placeholder="ID를 입력하세요" />
+						<label>PW</label>
+						<input
+							type="password"
+							placeholder="PW를 입력하세요" />
+						<button class="lg">login</button>
+						<button class="jo">Join</button>
+					</div>
+				</form>
 				<div class="header">
 					<h1 style="font-size: 90px; text-align: center">W O O</h1>
 					<h4 style="font-size: 32px; text-align: center">WEATHER & OOTD</h4>
