@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 		if(tagName === "BUTTON") {
 			let menuText = e.target.textContent;
 			if (menuText === "login") {
-				document.location.href="${rootPath}";
+				document.location.href="${rootPath}/login";
 			} else if (menuText === "Join") {
 				document.location.href="${rootPath}/join"
 			}  else if (menuText === "logout") {
@@ -31,9 +31,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 			}
 		}
 	})
-	document.querySelector("button.lg").addEventListener("click",(e)=>{
-		document.querySelector("form#login").submit();
-	})
+	
 	/*
 	document.querySelector("li#li_log").addEventListener("click",(e)=>{
 		document.location.href="${rootPath}/login"
@@ -56,9 +54,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 	<div>
 		<div class="container">
 			<div class="item-1">
-				<form
-					id="login"
-					method="POST">
+				
 					<div class="log_join">
 						<label>ID</label>
 						<input
@@ -71,7 +67,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
 						<button class="lg">login</button>
 						<button class="jo">Join</button>
 					</div>
-				</form>
 				<div class="header">
 					<h1 style="font-size: 90px; text-align: center">W O O</h1>
 					<h4 style="font-size: 32px; text-align: center">WEATHER & OOTD</h4>

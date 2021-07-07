@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 		if(tagName === "LI") {
 			let menuText = e.target.textContent;
 			if (menuText === "로그인") {
-				document.location.href="redirect:/";
+				document.location.href="redirect:/login";
 			} else if (menuText === "회원가입") {
 				document.location.href="${rootPath}/join"
 			}  else if (menuText === "로그아웃") {
@@ -30,9 +30,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 			}
 		}
 	})
-	document.querySelector("button.lg").addEventListener("click",(e)=>{
-		document.querySelector("form#login").submit();
-	})
+	
 	/*
 	document.querySelector("li#li_log").addEventListener("click",(e)=>{
 		document.location.href="${rootPath}/login"
@@ -51,38 +49,29 @@ document.addEventListener("DOMContentLoaded", ()=>{
 </head>
 
 <body>
-	<form
-		id="login"
-		method="POST">
-		<nav id="main_mem">
-			<ul>
-				<!-- 
+
+	<nav id="main_mem">
+		<ul>
+
 			<c:if test="${not empty MEMVO}">
-				
-		<li id="li_logout">로그아웃</li>
-		<li id="li_mypage">${MEMVO.us_name}</li>
-		
+
+			<!-- 	<li id="li_logout">로그아웃</li>
+				<li id="li_mypage">${MEMVO.us_name}</li> -->
+
 				<%@ include file="/WEB-INF/views/home_A.jsp"%>
 			</c:if>
 			<c:if test="${empty MEMVO}">
-				 
-		<li id="li_log">로그인</li>
-		<li id="li_join">회원가입</li> 
+
+				<!-- <li id="li_log">로그인</li>
+				<li id="li_join">회원가입</li> -->
 				<%@ include file="/WEB-INF/views/home_B.jsp"%>
-			</c:if>-->
+			</c:if>
 
-				<c:choose>
-					<c:when test="${empty MEMVO}">
-						
-					</c:when>
-					<c:otherwise>
-						<%@ include file="/WEB-INF/views/home_A.jsp"%>
-					</c:otherwise>
-				</c:choose>
 
-			</ul>
-		</nav>
-	</form>
+
+		</ul>
+	</nav>
+
 
 </body>
 </html>
