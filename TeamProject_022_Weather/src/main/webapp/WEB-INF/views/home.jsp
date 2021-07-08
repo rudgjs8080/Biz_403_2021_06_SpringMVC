@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 				document.location.href="${rootPath}/join"
 			}  else if (menuText === "로그아웃") {
 				document.location.href="${rootPath}/logout"
-			}
+			} 
 		}
 	})
 	

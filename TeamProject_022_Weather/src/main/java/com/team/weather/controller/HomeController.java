@@ -1,4 +1,4 @@
-package com.team.weather;
+package com.team.weather.controller;
 
 import java.util.Locale;
 

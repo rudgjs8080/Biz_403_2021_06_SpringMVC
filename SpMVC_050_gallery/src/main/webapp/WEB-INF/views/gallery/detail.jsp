@@ -10,7 +10,6 @@
 	value="${pageContext.request.contextPath}" />
 <style>
 form {
-	
 	display: flex;
 	padding-left: 20%;
 }
@@ -60,6 +59,9 @@ form label {
 		<legend>제목 : ${GFLIST[0].g_subject}</legend>
 		<div id="gallery_info">
 			<div>
+				<label>게시글 번호 : ${GFLIST[0].g_seq}</label>
+			</div>
+			<div>
 				<label>작성일 : ${GFLIST[0].g_date}</label>
 			</div>
 			<div>
@@ -83,5 +85,27 @@ form label {
 
 			</c:forEach>
 		</div>
+		<div>
+			<button class="gallery update">수정</button>
+			<button class="gallery delete">삭제</button>
+		</div>
 	</fieldset>
 </form>
+
+
+<script>
+let update_button = document.querySelector("button.gallery.update")
+let delete_button = document.querySelector("button.gallery.delete")
+
+update_button.addEventListener("click", ()=>{
+	alert("${GFLIST[0].g_seq}인 게시물을 수정")
+	location.href = "${rootPath}/gallery/delete" + "?g_seq=${GFLIST[0].g_seq}"
+})
+
+delete_button.addEventListener("click", ()=>{
+	if(confirm("일련번호 ${FGLIST[0].g_seq}인 게시물을 삭제하시겠습니까?")){
+		location.replace("${rootPath}/gallery/delete" + "?g_seq=${GFLIST[0].g_seq}")
+	}
+})
+
+</script>

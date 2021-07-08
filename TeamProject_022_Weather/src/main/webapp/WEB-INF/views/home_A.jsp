@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 				document.location.href="${rootPath}/logout"
 			} else if(menuText ==="MyPage"){
 				alert(${MEMVO.us_id})
-				document.location.href="${rootPath}/mypage=" + ${MEMVO.us_id}
+				document.location.href="${rootPath}/mypage?us_id=" + ${MEMVO.us_id}
 			}
 		}
 	})

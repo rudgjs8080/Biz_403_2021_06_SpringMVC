@@ -28,6 +28,9 @@ public class GalleryController {
 
 	protected final GalleryService gService;
 	protected final GalleryDao gDao;
+
+	// localhost:8080/rootPath/gallery/ 또는
+	// localhost:8080/rootPath/gellery 로 요청했을 때
 	@RequestMapping(value= {"/",""}, method=RequestMethod.GET)
 	public String list(Model model) throws Exception {
 		

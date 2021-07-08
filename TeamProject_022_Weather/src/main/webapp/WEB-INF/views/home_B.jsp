@@ -56,14 +56,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
 			<div class="item-1">
 				
 					<div class="log_join">
-						<label>ID</label>
-						<input
-							type="text"
-							placeholder="ID를 입력하세요" />
-						<label>PW</label>
-						<input
-							type="password"
-							placeholder="PW를 입력하세요" />
 						<button class="lg">login</button>
 						<button class="jo">Join</button>
 					</div>

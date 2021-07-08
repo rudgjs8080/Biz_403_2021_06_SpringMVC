@@ -1,4 +1,4 @@
-package com.team.weather;
+package com.team.weather.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -94,6 +94,10 @@ public class MemberController {
 			return "1";
 		}
 	}
-	
+	@RequestMapping(value="/mypage", method=RequestMethod.GET)
+	public String mypage(String us_id) {
+		
+		return "mypage";
+	}
 	
 }
