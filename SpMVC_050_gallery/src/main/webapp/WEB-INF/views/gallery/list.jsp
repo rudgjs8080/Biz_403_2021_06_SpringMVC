@@ -41,11 +41,17 @@ div.img img {
 	<div class="item_1">
 		<div class="img">
 			<h3>대표이미지</h3>
-			<img src="${rootPath}/files/${GA.g_image}">
+			<c:if test="${empty GA.g_image}">
+				<img src="${rootPath}/files/NoImage.png" width="100%">
+			</c:if>
+			<c:if test="${not empty GA.g_image}">
+				<img src="${rootPath}/files/${GA.g_image}">	
+			</c:if>
+			
 		</div>
 		<div class="content">
 			<h3>
-				제목 : <a href="${rootPath}/gallery/detail/${GA.g_seq}">${GA.g_subject}</a>
+				제목 : <a href="${rootPath}/gallery/detail2/${GA.g_seq}">${GA.g_subject}</a>
 			</h3>
 			<p>내용 : ${GA.g_content}</p>
 		</div>

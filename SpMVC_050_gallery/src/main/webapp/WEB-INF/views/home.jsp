@@ -46,13 +46,20 @@ div.head {
 div.item_1 {
 	margin: 0 auto;
 }
+
+.nav {
+	margin-bottom: 30px
+}
 </style>
 </head>
 <body>
 	<div class="head">
 		<h1>내 갤러리</h1>
 	</div>
-	<%@ include file="/WEB-INF/views/include/include_nav.jspf" %>
+
+	<div class="nav"><%@ include
+			file="/WEB-INF/views/include/include_nav.jspf"%></div>
+
 	<div class="main">
 		<c:choose>
 			<c:when test="${BODY eq 'GA-INPUT'}">
@@ -62,10 +69,10 @@ div.item_1 {
 				<%@ include file="/WEB-INF/views/gallery/list.jsp"%>
 			</c:when>
 			<c:when test="${BODY eq 'GA-DETAIL'}">
-				<div class="input_img">
-					<a href="${rootPath}/gallery">리스트로</a>
-				</div>
 				<%@ include file="/WEB-INF/views/gallery/detail.jsp"%>
+			</c:when>
+			<c:when test="${BODY eq 'GA-DETAIL-V2'}">
+				<%@ include file="/WEB-INF/views/gallery/detail2.jsp"%>
 			</c:when>
 			<c:when test="${BODY eq 'JOIN'}">
 				<%@ include file="/WEB-INF/views/member/join.jsp"%>
@@ -90,16 +97,16 @@ div.item_1 {
 	</div>
 </body>
 <script>
-	let main_nav = document.querySelector("nav#main_nav")
+	let main_nav = document.querySelector(".d_nav")
 	
 	if(main_nav) {
 		main_nav.addEventListener("click", (e)=>{
 			let menu = e.target
-			if(menu.tagName === "LI"){
+			if(menu.tagName === "DIV"){
 				if(menu.id === "join"){
 					location.href = "${rootPath}/member/join"
 				} else if(menu.id === "login"){
-					location.href = "${rootPath}/member/login"
+					location.href = "${rootPath}/member/nav"
 				} else if(menu.id === "logout"){
 					location.href = "${rootPath}/member/logout"
 				} else if(menu.id === "image_create"){

@@ -31,6 +31,8 @@ public class GalleryServiceImplV1 implements GalleryService{
 	@Qualifier("fileServiceV2")
 	protected final FileService fService;
 	
+	
+	
 	/*
 	 * @Autowired가 설정된 변수, method, 객체 등을 만나면
 	 * Spring framework는 변수를 초기화, method를 실행핳여
@@ -38,6 +40,7 @@ public class GalleryServiceImplV1 implements GalleryService{
 	 * 이미 생성되어 준비된 객체에 주입등을 수행한다
 	 * 
 	 */
+	/*
 	@Autowired
 	public void create_table(GalleryDao gDao) {
 		
@@ -46,7 +49,7 @@ public class GalleryServiceImplV1 implements GalleryService{
 		fDao.create_table(maps);
 		
 		
-	}
+	}*/
 	
 	
 	@Override
@@ -115,8 +118,32 @@ public class GalleryServiceImplV1 implements GalleryService{
 	@Override
 	public List<GalleryFilesDTO> findByIdGalleryFiles(Long g_seq) {
 		// TODO Auto-generated method stub
+	
+		List<GalleryFilesDTO> gFList = gDao.findByIdGalleryFiles(g_seq);
+		/*
+		 * Dao로부터 select를 한 후 데이터 검증 하기 위해 사용하는 코드
+		 * gFList가 데이터가 조회되지 않아 null이 발생할 수 있다
+		 */
 		
-		return gDao.findByIdGalleryFiles(g_seq);
+		if(gFList != null && gFList.size() > 0) {
+			log.debug(gFList.toString());
+		}
+		return gFList;
+
+	}
+
+
+	@Override
+	public GalleryDTO findByIdGallery(Long g_seq) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public int delete(Long g_seq) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

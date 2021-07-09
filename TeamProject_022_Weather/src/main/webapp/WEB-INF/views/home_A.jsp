@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 </script>
 </head>
 <link
-	href="${rootPath}/static/css/home_A.css?ver=2021-07-02-001"
+	href="${rootPath}/static/css/home_A.css?ver=2021-07-09-001"
 	rel="stylesheet" />
 <body>
 	<div>
@@ -128,6 +128,18 @@ document.addEventListener("DOMContentLoaded", ()=>{
 							</div>
 							<div class="w_data_div_o">
 								<img src="${rootPath}/static/images/male-clothes.png" />
+							</div>
+							<div class="w_data_div_o">
+								<img src="${rootPath}/static/images/polo-shirt.png" />
+							</div>
+							<div class="w_data_div_o">
+								<img src="${rootPath}/static/images/polo-shirt.png" />
+							</div>
+							<div class="w_data_div_o">
+								<img src="${rootPath}/static/images/polo-shirt.png" />
+							</div>
+							<div class="w_data_div_o">
+								<img src="${rootPath}/static/images/polo-shirt.png" />
 							</div>
 							<div class="w_data_div_o">
 								<img src="${rootPath}/static/images/polo-shirt.png" />

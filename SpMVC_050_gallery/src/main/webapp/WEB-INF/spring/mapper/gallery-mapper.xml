@@ -13,22 +13,59 @@
 		select * from tbl_gallery
 		where g_seq = #{g_seq}
 	</select>
-	<select id="findByIdGalleryFiles" resultType="GalleryFilesDTO">
-		select G.g_seq as
-		g_seq,
+
+	<!-- select 된 결과를 DTO와 매칭하는 중간단계 row mapper id : table을 select 했을 때 PK지정된 
+		값을 property : DTO변수이름, column : select 된 칼럼이름, as된 칼럼 이름 result : PK가 아닌 
+		칼럼들 property : DTO변수이름, column : select 된 칼럼이름, as된 칼럼 이름 -->
+	<resultMap type="GalleryDTO" id="GalleryDTOResultMap">
+		<id property="g_seq" column="g_seq" />
+		<result column="g_writer" property="g_writer" />
+		<result column="g_date" property="g_date" />
+		<result column="g_time" property="g_time" />
+		<result column="g_content" property="g_content" />
+		<result column="g_image" property="g_image" />
+		<collection property="fileList" ofType="FileDTO">
+			<id property="file_seq" column="f_seq" />
+			<result property="file_original" column="f_original" />
+			<result property="file_upname" column="f_upname" />
+		</collection>
+	</resultMap>
+
+	<sql id="selectGalleryAndFiles">
+		select
+		G.g_seq as g_seq,
 		G.g_writer as g_writer,
 		G.g_date as g_date,
-		G.g_time as g_time,
+		G.g_time as
+		g_time,
 		G.g_subject as g_subject,
 		G.g_content as g_content,
 		G.g_image as
 		g_image,
+
 		F.file_seq as f_seq,
 		F.file_original as f_original,
 		F.file_upname as f_upname
-		from tbl_gallery G, tbl_files F
-		where G.g_seq
-		= #{g_seq} and G.g_seq = F.file_gseq
+		from
+		tbl_gallery G
+		left join tbl_files F
+		on G.g_seq = F.file_gseq
+		where G.g_seq = #{g_seq}
+	</sql>
+
+
+	<select id="findByIdGalleryFilesResultMap"
+		resultMap="GalleryDTOResultMap">
+		<include refid="selectGalleryAndFiles">
+			<property name="g_seq" value="#{g_seq}"/>
+		</include>
+	</select>
+
+
+	<select id="findByIdGalleryFiles" resultType="GalleryFilesDTO">
+		<include refid="selectGalleryAndFiles">
+			<property name="g_seq" value="#{g_seq}"/>
+		</include>
 	</select>
 
 

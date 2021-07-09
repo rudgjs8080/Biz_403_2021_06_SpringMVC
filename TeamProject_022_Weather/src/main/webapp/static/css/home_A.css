@@ -58,6 +58,13 @@
 	text-align: right;
 }
 
+.logout, .mypage {
+	width: 70px;
+	cursor: pointer;
+	border: 0;
+	border-radius: 5px;
+}
+
 .item-2 {
 	display: grid;
 	grid-template-columns: 25% 50% 25%;
@@ -187,7 +194,16 @@ div.w_data_o {
 	height: 80%;
 	flex-flow: row wrap;
 	/*border: 1px solid red;*/
-	overflow: scroll;
+	overflow: auto;
+}
+div.w_data_o::-webkit-scrollbar{
+	width:10px;
+	background-color: transparent;
+	
+}
+div.w_data_o::-webkit-scrollbar-thumb{
+	background-color: #2f3542;
+	
 }
 
 div.w_data_div_o {
@@ -253,7 +269,6 @@ figure.snip1200:hover div.w_data, figure.snip1200:hover div.w_data_o {
 	background-size:cover;부모가 만들어준 높이를 cover 해라 background-position:centercenter;
 	
 }*/
-
 article {
 	flex: 1 1=> 원래는 1 1 0 넘치는 걸 줄여서 쓰는 속성 모자란 걸 늘려서 쓰는 속성??
   넘치는 모자른 속성을 채울 땐 flex: 1? 무슨 소린지 이해해보기 flex:1;

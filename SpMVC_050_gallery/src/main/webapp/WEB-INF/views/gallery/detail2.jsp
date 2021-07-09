@@ -56,31 +56,31 @@ form label {
 <form>
 	<fieldset>
 
-		<legend>제목 : ${GFLIST[0].g_subject}</legend>
+		<legend>제목 : ${GALLERY.g_subject}</legend>
 		<div id="gallery_info">
 			<div>
-				<label>게시글 번호 : ${GFLIST[0].g_seq}</label>
+				<label>게시글 번호 : ${GALLERY.g_subject}</label>
 			</div>
 			<div>
-				<label>작성일 : ${GFLIST[0].g_date}</label>
+				<label>작성일 : ${GALLERY.g_date}</label>
 			</div>
 			<div>
-				<label>작성시각 : ${GFLIST[0].g_time}</label>
+				<label>작성시각 : ${GALLERY.g_time}</label>
 			</div>
 			<div>
-				<label>작성자 : ${GFLIST[0].g_writer}</label>
+				<label>작성자 : ${GALLERY.g_writer}</label>
 			</div>
 			<div>
-				<label>작성내용 : ${GFLIST[0].g_content}</label>
+				<label>작성내용 : ${GALLERY.g_content}</label>
 			</div>
 		</div>
 
 		<div id="gallery_files">
 			<c:forEach
-				items="${GFLIST}"
+				items="${GALLERY.fileList}"
 				var="FILE">
 				<img
-					src="${rootPath}/files/${FILE.f_upname}"
+					src="${rootPath}/files/${FILE.file_upname}"
 					height="100px">
 
 			</c:forEach>
@@ -98,13 +98,13 @@ let update_button = document.querySelector("button.gallery.update")
 let delete_button = document.querySelector("button.gallery.delete")
 
 update_button.addEventListener("click", ()=>{
-	alert("${GFLIST[0].g_seq}인 게시물을 수정")
-	location.href = "${rootPath}/gallery/delete" + "?g_seq=${GFLIST[0].g_seq}"
+	alert("${GALLERY.g_seq}인 게시물을 수정")
+	location.href = "${rootPath}/gallery/delete" + "?g_seq=${GALLERY.g_seq}"
 })
 
 delete_button.addEventListener("click", ()=>{
-	if(confirm("일련번호 ${GFLIST[0].g_seq}인 게시물을 삭제하시겠습니까?")){
-		location.replace("${rootPath}/gallery/delete" + "?g_seq=${GFLIST[0].g_seq}")
+	if(confirm("일련번호 ${GALLERY.g_seq}인 게시물을 삭제하시겠습니까?")){
+		location.replace("${rootPath}/gallery/delete" + "?g_seq=${GALLERY.g_seq}")
 	}
 })
 
