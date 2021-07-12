@@ -1,4 +1,4 @@
-package com.team.weather.controller;
+package com.callor.woo.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.team.weather.dao.MemberDao;
-import com.team.weather.model.MemberVO;
+import com.callor.woo.dao.MemberDao;
+import com.callor.woo.model.MemberVO;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

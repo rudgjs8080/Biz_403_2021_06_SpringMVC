@@ -106,7 +106,7 @@ div.item_1 {
 				if(menu.id === "join"){
 					location.href = "${rootPath}/member/join"
 				} else if(menu.id === "login"){
-					location.href = "${rootPath}/member/nav"
+					location.href = "${rootPath}/member/login"
 				} else if(menu.id === "logout"){
 					location.href = "${rootPath}/member/logout"
 				} else if(menu.id === "image_create"){

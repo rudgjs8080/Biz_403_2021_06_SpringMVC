@@ -60,7 +60,6 @@ public class MemberController {
 	public String login(@PathVariable("url") String url) {
 		
 		
-		
 		return "redirect:/member/login?url=login";
 	}
 	
