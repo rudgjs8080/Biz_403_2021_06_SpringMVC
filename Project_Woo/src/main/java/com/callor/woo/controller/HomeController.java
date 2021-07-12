@@ -67,6 +67,6 @@ public class HomeController {
 		log.debug("날씨 파싱 데이터 {} ",weatherVO.toString());
 		
 		model.addAttribute("WEATHER", weatherVO);
-		return "weather";
+		return "home";
 	}
 }

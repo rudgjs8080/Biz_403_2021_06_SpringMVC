@@ -40,7 +40,12 @@ public class WeatherServiceImplV1 implements WeatherService {
 		
 		String day = dt.format(date);
 		
+		//int int_day = Integer.valueOf(day);
+		//int day1 = int_day -1 ;
+		//String day2 = String.valueOf(day1);
+		
 		StringBuilder queryURL = new StringBuilder();
+		
 		queryURL.append(WeatherSecret.URL);
 		
 		String queryString = String.format("?serviceKey=%s&numOfRows=225&pageNo=1&dataType=JSON"

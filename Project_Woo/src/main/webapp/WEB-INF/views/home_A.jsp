@@ -1,13 +1,7 @@
-<%@ page
-	language="java"
-	contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib
-	uri="http://java.sun.com/jsp/jstl/core"
-	prefix="c"%>
-<c:set
-	var="rootPath"
-	value="${pageContext.request.contextPath}" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,8 +43,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 })
 </script>
 </head>
-<link
-	href="${rootPath}/static/css/home_A.css?ver=2021-07-12-001"
+<link href="${rootPath}/static/css/home_A.css?ver=2021-07-12-001"
 	rel="stylesheet" />
 <body>
 	<div>
@@ -66,19 +59,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
 				</div>
 			</div>
 			<div class="item-2">
-				<div
-					class="w_1"
-					style="border: 1px solid black;">
+				<div class="w_1" style="border: 1px solid black;">
 					<p>기온</p>
 				</div>
-				<div
-					class="w_2"
-					style="border: 1px solid black;">
+				<div class="w_2" style="border: 1px solid black;">
 					<img src="${rootPath}/static/images/1.png" />
 				</div>
-				<div
-					class="w_3"
-					style="border: 1px solid black;">위치시간</div>
+				<div class="w_3" style="border: 1px solid black;">위치시간</div>
 				<div class="w_4">
 					<div class="w_4_a">
 						<div>온도</div>
@@ -113,11 +100,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
 			<div class="item-3">
 				<figure class="snip1200">
 					<div>
-						<img
-							class="clothes"
-							src="${rootPath}/static/images/clothes.png"
-							alt="clothes"
-							style="padding-top: 3%" />
+						<img class="clothes" src="${rootPath}/static/images/clothes.png"
+							alt="clothes" style="padding-top: 3%" />
 						<p style="margin: 10px; font-size: 20px">OOTD 추천을 원하시면 화면에 커서를
 							올려주세요</p>
 					</div>
@@ -153,7 +137,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 							<div class="w_data_div_o">
 								<img src="${rootPath}/static/images/polo-shirt.png" />
 							</div>
-
+							
 						</div>
 						<div class="heading_o">
 							<h1>
