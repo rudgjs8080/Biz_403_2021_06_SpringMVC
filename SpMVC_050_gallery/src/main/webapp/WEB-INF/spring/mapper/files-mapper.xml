@@ -41,7 +41,8 @@
 		file_gseq = #{file_seq},
 		file_original =
 		#{file_original},
-		file_upname = #{file_upname}
+		file_upname =
+		#{file_upname}
 	</insert>
 
 
@@ -76,21 +77,26 @@
 		</foreach>
 		as new(f_gseq, f_original, f_upname)
 		on duplicate key update
-		file_gseq = f_gseq, file_original = f_original, file_upname =
+		file_gseq =
+		f_gseq, file_original = f_original, file_upname =
 		f_upname
 	</insert>
 
 
 	<update id="update"></update>
-	<delete id="delete"></delete>
+	<delete id="delete">
+		DELETE FROM tbl_files
+		WHERE file_seq = #{file_seq}
+	</delete>
 	<update id="create_table">
-		create table if not exists tbl_files(
-		file_seq BIGINT
-		auto_increment primary key,
-		file_gseq BIGINT not null ,
-		file_original
-		VARCHAR(255) not null ,
-		file_upname VARCHAR(255) not null
+		CREATE TABLE IF NOT EXISTS tbl_files (
+		file_seq BIGINT AUTO_INCREMENT PRIMARY KEY,
+		file_gseq BIGINT NOT NULL,
+		file_original VARCHAR(256) NOT NULL,
+		file_upname VARCHAR(256) NOT NULL,
+		CONSTRAINT FOREIGN KEY (file_gseq)
+		REFERENCES tbl_gallery(g_seq)
+		ON DELETE CASCADE
 		)
 	</update>
 </mapper> 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -33,7 +34,6 @@ public class GalleryController {
 
 	@Qualifier("galleryServiceV2")
 	protected final GalleryService gService;
-	protected final GalleryDao gDao;
 
 	// localhost:8080/rootPath/gallery/ 또는
 	// localhost:8080/rootPath/gellery 로 요청했을 때
@@ -136,14 +136,14 @@ public class GalleryController {
 
 	
 	@RequestMapping(value="/delete", method=RequestMethod.GET)
-	public String delete(@RequestParam("seq") String seq, HttpSession session) {
+	public String delete(@RequestParam("g_seq") String seq, HttpSession session) {
 		
 		// 삭제를 요구하면
 		// 1. 로그인이 되었나 확인
-		MemberVO memVO = (MemberVO) session.getAttribute("MEMBER");
-		if(memVO == null) {
-			return "redirect:/member/login";
-		}
+		//MemberVO memVO = (MemberVO) session.getAttribute("MEMBER");
+		//if(memVO == null) {
+		//	return "redirect:/member/login";
+		//}
 		
 		Long g_seq = 0L;
 		try {
@@ -157,6 +157,14 @@ public class GalleryController {
 		
 		int ret = gService.delete(g_seq);
 		return "redirect:/gallery";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/file/delete/{seq}", method=RequestMethod.GET)
+	public String file_delete(@PathVariable("seq") String seq) {
+		
+		
+		return "OK";
 	}
 	
 	
