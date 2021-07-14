@@ -7,8 +7,10 @@
 
 	<select id="selectAll"></select>
 	<select id="findById">
-
+		SELECT * FROM tbl_files
+ 		WHERE file_seq = #{f_seq}
 	</select>
+	
 	<insert id="insert" parameterType="FileDTO">
 		insert into tbl_files(
 		file_gseq,

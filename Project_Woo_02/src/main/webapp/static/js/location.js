@@ -9,12 +9,7 @@ function success(position) {
     console.log("latitude(경도) : " + lat);
     console.log("longitude(위도) : " + lng);
 
-    // JSON 타입으로 전환
-    //let posJson = {
-    //    lat, lng
-    //}
-
-    console.log(`${rootPath}`)
+    // fetch 함수로 변경예정
     // fetch(`${rootPath}/set?lat=${lat}&lng=${lng}`) // ,{data:posJson})
     // .then(response=>response.json())
     // .then(json=>console.log(json));

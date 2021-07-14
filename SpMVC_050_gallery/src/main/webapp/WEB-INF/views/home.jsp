@@ -1,18 +1,14 @@
-<%@ page
-	language="java"
-	contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib
-	uri="http://java.sun.com/jsp/jstl/core"
-	prefix="c"%>
-<c:set
-	var="rootPath"
-	value="${pageContext.request.contextPath}" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>나의 홈페이지</title>
+<script src="https://kit.fontawesome.com/58b5d9133d.js" crossorigin="anonymous"></script>
+
 <style>
 * {
 	box-sizing: border-box;
@@ -81,18 +77,12 @@ div.item_1 {
 				<%@ include file="/WEB-INF/views/member/login.jsp"%>
 			</c:when>
 			<c:otherwise>
-
+				<a href="${rootPath}/gallery/input">이미지 등록</a>
 			</c:otherwise>
 		</c:choose>
-		<c:forEach
-			items="${FILES}"
-			var="FILE">
-			<a
-				href="${rootPath}/files/${FILE}"
-				target="_NEW"> <img
-				src="${rootPath}/files/${FILE}"
-				width="200px;"
-				height="100px;" /></a>
+		<c:forEach items="${FILES}" var="FILE">
+			<a href="${rootPath}/files/${FILE}" target="_NEW"> <img
+				src="${rootPath}/files/${FILE}" width="200px;" height="100px;" /></a>
 		</c:forEach>
 	</div>
 </body>

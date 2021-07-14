@@ -51,7 +51,7 @@ public class APIController {
 		String jsonString = nService.getJsonString(url);
 		List<AddrDTO> addrList = nService.getAddrList(jsonString);
 		
-		log.debug(addrList.toString());
+		log.debug("확인 {}", addrList.toString());
 		String addr = "";
 		for(int i = 1; i < 4; i++) {
 			addr += addrList.get(i).getName();
@@ -68,6 +68,7 @@ public class APIController {
 		SimpleDateFormat dt = new SimpleDateFormat("yyyyMMdd");
 		
 		String day = dt.format(date);
+		
 		
 		int int_day = Integer.valueOf(day);
 		int day_2 = int_day -1;
@@ -96,6 +97,6 @@ public class APIController {
 		model.addAttribute("TOMORROW", tomorrow);
 		model.addAttribute("AFTERTOMORROW", afterTomorrow);
 		
-		return "weather";
+		return "home1";
 	}
 }

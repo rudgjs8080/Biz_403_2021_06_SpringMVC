@@ -38,9 +38,12 @@ public class GalleryController {
 	// localhost:8080/rootPath/gallery/ 또는
 	// localhost:8080/rootPath/gellery 로 요청했을 때
 	@RequestMapping(value= {"/",""}, method=RequestMethod.GET)
-	public String list(Model model) throws Exception {
+	public String list(@RequestParam (value = "pageNum", required = false, defaultValue = "1")
+	String pageNum,	Model model) throws Exception {
 		
-		List<GalleryDTO> gList = gService.selectAll();
+		int intPageNum = Integer.valueOf(pageNum);
+		List<GalleryDTO> gList = gService.selectAllPage(intPageNum);
+		
 		model.addAttribute("GALLERYS",gList);
 		model.addAttribute("BODY", "GA-LIST");
 		
@@ -134,7 +137,9 @@ public class GalleryController {
 		return "home";
 	}
 
-	
+	/*
+	 * 첨부파일이 있는 게시물의 삭제
+	 */
 	@RequestMapping(value="/delete", method=RequestMethod.GET)
 	public String delete(@RequestParam("g_seq") String seq, HttpSession session) {
 		
@@ -164,7 +169,18 @@ public class GalleryController {
 	public String file_delete(@PathVariable("seq") String seq) {
 		
 		
-		return "OK";
+		Long g_seq = 0L;
+		try {
+			g_seq = Long.valueOf(seq);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "FAIL_SEQ";
+		}
+		
+		int ret = gService.file_delete(g_seq);
+
+		if(ret > 0) return "OK";
+		else return "FAIL";
 	}
 	
 	

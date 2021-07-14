@@ -13,9 +13,8 @@ import lombok.ToString;
 @NoArgsConstructor
 public class WeatherDTO {
 
-	private String category;
 	private Integer fcstDate;
 	private String fcstTime;
+	private String category;
 	private String fcstValue;
-	
 }
