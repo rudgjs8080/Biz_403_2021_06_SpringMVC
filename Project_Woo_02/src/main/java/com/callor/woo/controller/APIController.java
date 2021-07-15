@@ -67,20 +67,26 @@ public class APIController {
 		
 		SimpleDateFormat dt = new SimpleDateFormat("yyyyMMdd");
 		
+		SimpleDateFormat ct = new SimpleDateFormat("HH00");
 		String day = dt.format(date);
 		
+		String time = ct.format(date);
 		
+		
+		/*
 		int int_day = Integer.valueOf(day);
 		int day_2 = int_day -1;
 		String day1 = String.valueOf(day_2);
+		*/
 		
 		
-		
-		String queryURL = wService.queryURL(location, day1);
+		String queryURL = wService.queryURL(location, day);
 		String weatherString = wService.getJsonString(queryURL);
 		List<WeatherVO> weatherVO = wService.getWeatherList(weatherString);
 		
 		log.debug("날씨 파싱 데이터 {} ",weatherVO.toString());
+		
+		
 		
 		Map weather = dService.gubun(day, weatherVO);
 		
@@ -88,11 +94,15 @@ public class APIController {
 		List<WeatherDTO> tomorrow = (List<WeatherDTO>) weather.get("tomorrow");
 		List<WeatherDTO> afterTomorrow = (List<WeatherDTO>) weather.get("afterTomorrow");
 		
+		
+		
+		
 //		log.debug("날씨전체 맵 {}", weather.toString());
 //		log.debug("오늘날씨 {}",today.toString());
 //		log.debug("내일날씨 {}",tomorrow.toString());
 //		log.debug("2일뒤날씨 {}",afterTomorrow.toString());
 		
+		model.addAttribute("TIME",time);
 		model.addAttribute("TODAY", today);
 		model.addAttribute("TOMORROW", tomorrow);
 		model.addAttribute("AFTERTOMORROW", afterTomorrow);

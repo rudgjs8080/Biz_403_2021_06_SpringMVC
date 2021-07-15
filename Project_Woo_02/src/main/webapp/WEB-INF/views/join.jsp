@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>회원가입</title>
 </head>
-<link href="${rootPath}/static/css/join.css?ver=2021-07-09-001"
+<link href="${rootPath}/static/css/join.css?ver=2021-07-15-003"
 	rel="stylesheet" />
 <body>
 	<figure class="snip1432">

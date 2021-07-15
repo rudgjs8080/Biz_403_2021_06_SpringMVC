@@ -68,8 +68,9 @@
 
 .item-2 {
 	display: grid;
-	grid-template-columns: auto;
-	grid-template-rows: 40% 20% 20% 20%;
+	grid-template-columns: 25% 50% 25%;
+	grid-template-rows: auto;
+	font-size: auto;
 }
 
 .w_1 {
@@ -252,9 +253,8 @@ figure.snip1200:hover div.w_data, figure.snip1200:hover div.w_data_o {
         */
 	}
 	.item-2 {
-	display: grid;
-	grid-template-columns: auto;
-	grid-template-rows: 40% 20% 20% 20%;
+		grid-template-columns: 20% 60% 20%;
+		grid-template-rows: 2fr 1fr;
 	}
 	.item-4 {
 		grid-column: 1/3;

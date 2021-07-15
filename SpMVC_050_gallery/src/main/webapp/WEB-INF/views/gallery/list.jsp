@@ -34,6 +34,7 @@ div.img img {
 	text-align: center;
 }
 </style>
+<%@ include file="/WEB-INF/views/include/include_gallery_search.jspf" %>
 <div class="main_list">
 <c:forEach
 	items="${GALLERYS}"
@@ -58,3 +59,4 @@ div.img img {
 	</div>
 </c:forEach>
 </div>
+<%@ include file="/WEB-INF/views/include/include_page_nav.jspf"%>

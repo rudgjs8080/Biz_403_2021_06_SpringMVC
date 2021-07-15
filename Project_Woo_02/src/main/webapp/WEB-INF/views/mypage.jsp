@@ -22,7 +22,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <link
-	href="${rootPath}/static/css/mypage.css?ver=2021-07-09-002"
+	href="${rootPath}/static/css/mypage.css?ver=2021-07-15-002"
 	rel="stylesheet" />
 <script>
 document.addEventListener("DOMContentLoaded", ()=>{

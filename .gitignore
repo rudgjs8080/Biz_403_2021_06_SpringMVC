@@ -151,3 +151,5 @@ RemoteSystemsTempFiles/
 
 # naver secret
 NaverSecret.*
+# 
+WeatherSecret.*

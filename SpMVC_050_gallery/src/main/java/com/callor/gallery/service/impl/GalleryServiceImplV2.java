@@ -10,6 +10,7 @@ import com.callor.gallery.model.GalleryDTO;
 import com.callor.gallery.persistance.ext.FileDao;
 import com.callor.gallery.persistance.ext.GalleryDao;
 import com.callor.gallery.service.FileService;
+import com.callor.gallery.service.PageService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,8 +18,8 @@ import lombok.extern.slf4j.Slf4j;
 @Service("galleryServiceV2")
 public class GalleryServiceImplV2 extends GalleryServiceImplV1 {
 
-	public GalleryServiceImplV2(GalleryDao gDao, FileDao fDao, @Qualifier("fileServiceV2") FileService fService) {
-		super(gDao, fDao, fService);
+	public GalleryServiceImplV2(GalleryDao gDao, FileDao fDao,  @Qualifier("fileServiceV2")FileService fService, PageService pageService) {
+		super(gDao, fDao, fService, pageService);
 		// TODO Auto-generated constructor stub
 	}
 

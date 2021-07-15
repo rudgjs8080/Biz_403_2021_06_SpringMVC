@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 </script>
 </head>
 <link
-	href="${rootPath}/static/css/home_A.css?ver=2021-07-09-001"
+	href="${rootPath}/static/css/home_A.css?ver=2021-07-15-007"
 	rel="stylesheet" />
 <body>
 	<div>
@@ -69,12 +69,58 @@ document.addEventListener("DOMContentLoaded", ()=>{
 				<div
 					class="w_1"
 					style="border: 1px solid black;">
-					<p>기온</p>
+					<c:forEach
+						items="${TODAY}"
+						var="TD">
+						<c:choose>
+							<c:when
+								test="${TD.fcstTime == '1200' && TD.category == '3시간 기온'}">
+								<div>${TD.fcstValue}</div>
+							</c:when>
+							<c:otherwise>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
 				</div>
 				<div
 					class="w_2"
 					style="border: 1px solid black;">
-					<img src="${rootPath}/static/images/1.png" />
+
+					<c:forEach
+						items="${TODAY}"
+						var="TD">
+
+						<c:choose>
+							<c:when
+								test="${TD.category == '하늘상태' && TD.fcstValue =='맑음' && TD.fcstTime == '1200'}">
+								<div>
+									<img
+										src="${rootPath}/static/icon/size-large/맑음.png"
+										width="100px">
+								</div>
+							</c:when>
+							<c:when
+								test="${TD.category == '하늘상태' && TD.fcstValue =='구름많음'&&TD.fcstTime == '1200' }">
+								<div>
+									<img
+										src="${rootPath}/static/icon/size-large/구름많음.png"
+										width="100px">
+								</div>
+							</c:when>
+							<c:when
+								test="${TD.category == '하늘상태' && TD.fcstValue =='흐림' &&TD.fcstTime == '1200'}">
+								<div>
+									<img
+										src="${rootPath}/static/icon/size-large/흐림.png"
+										width="100px">
+								</div>
+							</c:when>
+							<c:otherwise>
+
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+
 				</div>
 				<div
 					class="w_3"
@@ -85,24 +131,61 @@ document.addEventListener("DOMContentLoaded", ()=>{
 						<div>
 							<img src="${rootPath}/static/images/온도계.png" />
 						</div>
-						<div>21</div>
+						<div>
+							<c:forEach
+								items="${TODAY}"
+								var="TD">
+								<c:choose>
+									<c:when
+										test="${TD.fcstTime == '1200' && TD.category == '3시간 기온'}">
+										<div>${TD.fcstValue}</div>
+									</c:when>
+									<c:otherwise>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+						</div>
 					</div>
 					<div class="w_4_a">
-						<div>온도</div>
+						<div>습도</div>
 						<div>
 							<img src="${rootPath}/static/images/온도계.png" />
 						</div>
-						<div>21</div>
+						<div>
+							<c:forEach
+								items="${TODAY}"
+								var="TD">
+								<c:choose>
+									<c:when
+										test="${TD.fcstTime == '1200' && TD.category == '습도'}">
+										<div>${TD.fcstValue}</div>
+									</c:when>
+									<c:otherwise>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+						</div>
 					</div>
 					<div class="w_4_a">
-						<div>온도</div>
+						<div>강수확률</div>
 						<div>
 							<img src="${rootPath}/static/images/온도계.png" />
 						</div>
-						<div>21</div>
+						<div><c:forEach
+						items="${TODAY}"
+						var="TD">
+						<c:choose>
+							<c:when
+								test="${TD.fcstTime == '1200' && TD.category == '강수확률'}">
+								<div>${TD.fcstValue}</div>
+							</c:when>
+							<c:otherwise>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach></div>
 					</div>
 					<div class="w_4_a">
-						<div>온도</div>
+						<div>바람</div>
 						<div>
 							<img src="${rootPath}/static/images/온도계.png" />
 						</div>
