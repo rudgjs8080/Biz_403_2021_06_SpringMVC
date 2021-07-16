@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 						</div>
 					</div>
 					<div class="w_3_a">
-						<div>강수확률</div>
+						<div>강수</div>
 						<div>
 							<c:forEach
 								items="${TODAY}"
@@ -187,7 +187,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
 								<div>${TD.fcstValue}</div>
 							</div>
 						</c:if>
-
+						<c:if test="${TD.category == '강수확률'}">
+							<div>${TD.fcstValue}</div>
+						</c:if>
 					</c:forEach>
 				</div>
 				<div class="w_5">
@@ -195,10 +197,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
 						items="${TOMORROW}"
 						var="TM">
 						<c:if test="${TM.category == '3시간 기온'}">
-							<div class="w_5_a">
 								<div>${TM.fcstTime}</div>
 								<div>${TM.fcstValue}</div>
-							</div>
+							<c:if test="${TM.category == '강수확률'}">
+								<div>${TM.fcstValue}</div>
+							</c:if>
 						</c:if>
 
 					</c:forEach>

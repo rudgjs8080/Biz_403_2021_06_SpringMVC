@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 						</div>
 					</div>
 					<div class="w_3_a">
-						<div>강수확률</div>
+						<div>강수</div>
 						<div>
 							<c:forEach
 								items="${TODAY}"

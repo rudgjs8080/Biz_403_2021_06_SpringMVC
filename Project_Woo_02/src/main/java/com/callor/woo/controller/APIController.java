@@ -61,7 +61,7 @@ public class APIController {
 		for (int i = 1; i < 4; i++) {
 			addr += addrList.get(i).getName();
 		}
-
+		
 		log.debug("String addr {}", addr.trim());
 
 		List<AddrVO> location = nService.findByAddr(addr);
@@ -98,7 +98,8 @@ public class APIController {
 		//		log.debug("2일뒤날씨 {}",afterTomorrow.toString());
 
 		String time = tService.time();
-
+		
+		model.addAttribute("LOCATION",location);
 		model.addAttribute("TIME", time);
 		model.addAttribute("TODAY", today);
 		model.addAttribute("TOMORROW", tomorrow);
