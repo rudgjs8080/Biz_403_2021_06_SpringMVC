@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 </script>
 </head>
 <link
-	href="${rootPath}/static/css/home_A.css?ver=2021-07-16-001"
+	href="${rootPath}/static/css/home_A.css?ver=2021-07-16-002"
 	rel="stylesheet" />
 <body>
 	<div>
@@ -66,9 +66,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 				</div>
 			</div>
 			<div class="item-2">
-				<div
-					class="w_1"
-					style="border: 1px solid black;">
+				<div class="w_1">
 
 					<c:forEach
 						items="${TODAY}"
@@ -76,7 +74,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 						<c:choose>
 							<c:when
-								test="${TD.category == '하늘상태' && TD.fcstValue =='맑음' && TD.fcstTime == '1200'}">
+								test="${TD.category == '하늘상태' && TD.fcstValue =='맑음' && TD.fcstTime == TIME}">
 								<div>
 									<img
 										src="${rootPath}/static/icon/size-large/맑음.png"
@@ -84,7 +82,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 								</div>
 							</c:when>
 							<c:when
-								test="${TD.category == '하늘상태' && TD.fcstValue =='구름많음'&&TD.fcstTime == '1200' }">
+								test="${TD.category == '하늘상태' && TD.fcstValue =='구름많음'&&TD.fcstTime == TIME }">
 								<div>
 									<img
 										src="${rootPath}/static/icon/size-large/구름많음.png"
@@ -92,7 +90,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 								</div>
 							</c:when>
 							<c:when
-								test="${TD.category == '하늘상태' && TD.fcstValue =='흐림' &&TD.fcstTime == '1200'}">
+								test="${TD.category == '하늘상태' && TD.fcstValue =='흐림' &&TD.fcstTime == TIME}">
 								<div>
 									<img
 										src="${rootPath}/static/icon/size-large/흐림.png"
@@ -100,207 +98,112 @@ document.addEventListener("DOMContentLoaded", ()=>{
 								</div>
 							</c:when>
 							<c:otherwise>
-
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
 
 				</div>
-				<div
-					class="w_2"
-					style="border: 1px solid black;">
+				<div class="w_2">
 
 					<c:forEach
 						items="${TODAY}"
 						var="TD">
 						<c:if test="${TD.category == '아침 최저기온'}">
-							<div>${TD.fcstValue} / </div>
+							${TD.fcstValue} / 
 						</c:if>
 						<c:if test="${TD.category == '낮 최고기온'}">
-							<div>${TD.fcstValue}</div>
+							${TD.fcstValue}
 						</c:if>
 					</c:forEach>
 
 				</div>
 				<div class="w_3">
 					<div class="w_3_a">
-						<div>1</div>
-						<div>2</div>
-						<div>3</div>
+						<div>기온</div>
+						<div>
+							<c:forEach
+								items="${TODAY}"
+								var="TD">
+								<c:if test="${TD.fcstTime == TIME && TD.category == '3시간 기온'}">
+									<div>${TD.fcstValue}</div>
+								</c:if>
+							</c:forEach>
+						</div>
+						<div>
+							<img src="${rootPath}/static/images/온도계.png" />
+						</div>
 					</div>
 					<div class="w_3_a">
-						<div>1</div>
-						<div>2</div>
-						<div>3</div>
+						<div>습도</div>
+						<div>
+							<c:forEach
+								items="${TODAY}"
+								var="TD">
+								<c:if test="${TD.fcstTime == TIME && TD.category == '3시간 기온'}">
+									<div>${TD.fcstValue}</div>
+								</c:if>
+							</c:forEach>
+						</div>
+						<div>
+							<img src="${rootPath}/static/images/humidity.png" />
+						</div>
 					</div>
 					<div class="w_3_a">
-						<div>1</div>
-						<div>2</div>
-						<div>3</div>
+						<div>강수확률</div>
+						<div>
+							<c:forEach
+								items="${TODAY}"
+								var="TD">
+								<c:if test="${TD.fcstTime == TIME && TD.category == '강수확률'}">
+									<div>${TD.fcstValue}</div>
+								</c:if>
+							</c:forEach>
+						</div>
+						<div>
+							<img src="${rootPath}/static/images/강수확률.png" />
+						</div>
 					</div>
 					<div class="w_3_a">
-						<div>1</div>
-						<div>2</div>
-						<div>3</div>
+						<div>풍향</div>
+						<c:forEach
+							items="${TODAY}"
+							var="TD">
+							<c:if test="${TD.fcstTime == TIME && TD.category == '풍향'}">
+								<div>${TD.fcstValue}</div>
+								<div>
+									<img src="${rootPath}/static/images/${TD.fcstValue}.png" />
+								</div>
+							</c:if>
+						</c:forEach>
 					</div>
 				</div>
 				<div class="w_4">
-					<div class="w_4_a">
-						<div>온도</div>
-						<div>
-							<img src="${rootPath}/static/images/온도계.png" />
-						</div>
-						<div>
-							<c:forEach
-								items="${TODAY}"
-								var="TD">
-								<c:choose>
-									<c:when
-										test="${TD.fcstTime == '1200' && TD.category == '3시간 기온'}">
-										<div>${TD.fcstValue}</div>
-									</c:when>
-									<c:otherwise>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-						</div>
-					</div>
-					<div class="w_4_a">
-						<div>습도</div>
-						<div>
-							<img src="${rootPath}/static/images/온도계.png" />
-						</div>
-						<div>
-							<c:forEach
-								items="${TODAY}"
-								var="TD">
-								<c:choose>
-									<c:when test="${TD.fcstTime == '1200' && TD.category == '습도'}">
-										<div>${TD.fcstValue}</div>
-									</c:when>
-									<c:otherwise>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-						</div>
-					</div>
-					<div class="w_4_a">
-						<div>강수확률</div>
-						<div>
-							<img src="${rootPath}/static/images/온도계.png" />
-						</div>
-						<div>
-							<c:forEach
-								items="${TODAY}"
-								var="TD">
-								<c:choose>
-									<c:when
-										test="${TD.fcstTime == '1200' && TD.category == '강수확률'}">
-										<div>${TD.fcstValue}</div>
-									</c:when>
-									<c:otherwise>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-						</div>
-					</div>
-					<div class="w_4_a">
-						<div>바람</div>
-						<div>
-							<img src="${rootPath}/static/images/온도계.png" />
-						</div>
-						<div>21</div>
-					</div>
-					<div class="w_4_a">
-						<div>바람</div>
-						<div>
-							<img src="${rootPath}/static/images/온도계.png" />
-						</div>
-						<div>21</div>
-					</div>
-					<div class="w_4_a">
-						<div>바람</div>
-						<div>
-							<img src="${rootPath}/static/images/온도계.png" />
-						</div>
-						<div>21</div>
-					</div>
-					<div class="w_4_a">
-						<div>바람</div>
-						<div>
-							<img src="${rootPath}/static/images/온도계.png" />
-						</div>
-						<div>21</div>
-					</div>
-					<div class="w_4_a">
-						<div>바람</div>
-						<div>
-							<img src="${rootPath}/static/images/온도계.png" />
-						</div>
-						<div>21</div>
-					</div>
+					<c:forEach
+						items="${TODAY}"
+						var="TD">
+						<c:if test="${TD.category == '3시간 기온'}">
+							<div class="w_4_a">
+								<div>${TD.fcstTime}</div>
+								<div>${TD.fcstValue}</div>
+							</div>
+						</c:if>
+
+					</c:forEach>
 				</div>
 				<div class="w_5">
-				<div class="w_5_a">
-						<div>바람</div>
-						<div>
-							<img src="${rootPath}/static/images/온도계.png" />
-						</div>
-						<div>21</div>
-					</div>
-					<div class="w_5_a">
-						<div>바람</div>
-						<div>
-							<img src="${rootPath}/static/images/온도계.png" />
-						</div>
-						<div>21</div>
-					</div>
-					<div class="w_5_a">
-						<div>바람</div>
-						<div>
-							<img src="${rootPath}/static/images/온도계.png" />
-						</div>
-						<div>21</div>
-					</div>
-					<div class="w_5_a">
-						<div>바람</div>
-						<div>
-							<img src="${rootPath}/static/images/온도계.png" />
-						</div>
-						<div>21</div>
-					</div>
-					<div class="w_5_a">
-						<div>바람</div>
-						<div>
-							<img src="${rootPath}/static/images/온도계.png" />
-						</div>
-						<div>21</div>
-					</div>
-					<div class="w_5_a">
-						<div>바람</div>
-						<div>
-							<img src="${rootPath}/static/images/온도계.png" />
-						</div>
-						<div>21</div>
-					</div>
-					<div class="w_5_a">
-						<div>바람</div>
-						<div>
-							<img src="${rootPath}/static/images/온도계.png" />
-						</div>
-						<div>21</div>
-					</div>
-					<div class="w_5_a">
-						<div>바람</div>
-						<div>
-							<img src="${rootPath}/static/images/온도계.png" />
-						</div>
-						<div>21</div>
-					</div>
-					
+					<c:forEach
+						items="${TOMORROW}"
+						var="TM">
+						<c:if test="${TM.category == '3시간 기온'}">
+							<div class="w_5_a">
+								<div>${TM.fcstTime}</div>
+								<div>${TM.fcstValue}</div>
+							</div>
+						</c:if>
+
+					</c:forEach>
+
 				</div>
-				
-				
 			</div>
 			<div class="item-3">
 				<figure class="snip1200">
