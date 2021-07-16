@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 </script>
 </head>
 <link
-	href="${rootPath}/static/css/home_A.css?ver=2021-07-15-007"
+	href="${rootPath}/static/css/home_A.css?ver=2021-07-16-001"
 	rel="stylesheet" />
 <body>
 	<div>
@@ -68,22 +68,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
 			<div class="item-2">
 				<div
 					class="w_1"
-					style="border: 1px solid black;">
-					<c:forEach
-						items="${TODAY}"
-						var="TD">
-						<c:choose>
-							<c:when
-								test="${TD.fcstTime == '1200' && TD.category == '3시간 기온'}">
-								<div>${TD.fcstValue}</div>
-							</c:when>
-							<c:otherwise>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-				</div>
-				<div
-					class="w_2"
 					style="border: 1px solid black;">
 
 					<c:forEach
@@ -123,8 +107,43 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 				</div>
 				<div
-					class="w_3"
-					style="border: 1px solid black;">위치시간</div>
+					class="w_2"
+					style="border: 1px solid black;">
+
+					<c:forEach
+						items="${TODAY}"
+						var="TD">
+						<c:if test="${TD.category == '아침 최저기온'}">
+							<div>${TD.fcstValue} / </div>
+						</c:if>
+						<c:if test="${TD.category == '낮 최고기온'}">
+							<div>${TD.fcstValue}</div>
+						</c:if>
+					</c:forEach>
+
+				</div>
+				<div class="w_3">
+					<div class="w_3_a">
+						<div>1</div>
+						<div>2</div>
+						<div>3</div>
+					</div>
+					<div class="w_3_a">
+						<div>1</div>
+						<div>2</div>
+						<div>3</div>
+					</div>
+					<div class="w_3_a">
+						<div>1</div>
+						<div>2</div>
+						<div>3</div>
+					</div>
+					<div class="w_3_a">
+						<div>1</div>
+						<div>2</div>
+						<div>3</div>
+					</div>
+				</div>
 				<div class="w_4">
 					<div class="w_4_a">
 						<div>온도</div>
@@ -156,8 +175,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 								items="${TODAY}"
 								var="TD">
 								<c:choose>
-									<c:when
-										test="${TD.fcstTime == '1200' && TD.category == '습도'}">
+									<c:when test="${TD.fcstTime == '1200' && TD.category == '습도'}">
 										<div>${TD.fcstValue}</div>
 									</c:when>
 									<c:otherwise>
@@ -171,18 +189,48 @@ document.addEventListener("DOMContentLoaded", ()=>{
 						<div>
 							<img src="${rootPath}/static/images/온도계.png" />
 						</div>
-						<div><c:forEach
-						items="${TODAY}"
-						var="TD">
-						<c:choose>
-							<c:when
-								test="${TD.fcstTime == '1200' && TD.category == '강수확률'}">
-								<div>${TD.fcstValue}</div>
-							</c:when>
-							<c:otherwise>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach></div>
+						<div>
+							<c:forEach
+								items="${TODAY}"
+								var="TD">
+								<c:choose>
+									<c:when
+										test="${TD.fcstTime == '1200' && TD.category == '강수확률'}">
+										<div>${TD.fcstValue}</div>
+									</c:when>
+									<c:otherwise>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+						</div>
+					</div>
+					<div class="w_4_a">
+						<div>바람</div>
+						<div>
+							<img src="${rootPath}/static/images/온도계.png" />
+						</div>
+						<div>21</div>
+					</div>
+					<div class="w_4_a">
+						<div>바람</div>
+						<div>
+							<img src="${rootPath}/static/images/온도계.png" />
+						</div>
+						<div>21</div>
+					</div>
+					<div class="w_4_a">
+						<div>바람</div>
+						<div>
+							<img src="${rootPath}/static/images/온도계.png" />
+						</div>
+						<div>21</div>
+					</div>
+					<div class="w_4_a">
+						<div>바람</div>
+						<div>
+							<img src="${rootPath}/static/images/온도계.png" />
+						</div>
+						<div>21</div>
 					</div>
 					<div class="w_4_a">
 						<div>바람</div>
@@ -192,6 +240,67 @@ document.addEventListener("DOMContentLoaded", ()=>{
 						<div>21</div>
 					</div>
 				</div>
+				<div class="w_5">
+				<div class="w_5_a">
+						<div>바람</div>
+						<div>
+							<img src="${rootPath}/static/images/온도계.png" />
+						</div>
+						<div>21</div>
+					</div>
+					<div class="w_5_a">
+						<div>바람</div>
+						<div>
+							<img src="${rootPath}/static/images/온도계.png" />
+						</div>
+						<div>21</div>
+					</div>
+					<div class="w_5_a">
+						<div>바람</div>
+						<div>
+							<img src="${rootPath}/static/images/온도계.png" />
+						</div>
+						<div>21</div>
+					</div>
+					<div class="w_5_a">
+						<div>바람</div>
+						<div>
+							<img src="${rootPath}/static/images/온도계.png" />
+						</div>
+						<div>21</div>
+					</div>
+					<div class="w_5_a">
+						<div>바람</div>
+						<div>
+							<img src="${rootPath}/static/images/온도계.png" />
+						</div>
+						<div>21</div>
+					</div>
+					<div class="w_5_a">
+						<div>바람</div>
+						<div>
+							<img src="${rootPath}/static/images/온도계.png" />
+						</div>
+						<div>21</div>
+					</div>
+					<div class="w_5_a">
+						<div>바람</div>
+						<div>
+							<img src="${rootPath}/static/images/온도계.png" />
+						</div>
+						<div>21</div>
+					</div>
+					<div class="w_5_a">
+						<div>바람</div>
+						<div>
+							<img src="${rootPath}/static/images/온도계.png" />
+						</div>
+						<div>21</div>
+					</div>
+					
+				</div>
+				
+				
 			</div>
 			<div class="item-3">
 				<figure class="snip1200">
@@ -237,16 +346,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
 								<img src="${rootPath}/static/images/polo-shirt.png" />
 							</div>
 						</div>
-						<div class="heading_o">
-							<h1>
-								<span> OOTD</span>
-							</h1>
-						</div>
 					</figcaption>
 				</figure>
 			</div>
 		</div>
-		<div class="item-4">3</div>
 	</div>
 </body>
 </html>

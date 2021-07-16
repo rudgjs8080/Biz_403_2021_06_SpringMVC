@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 </head>
 
 <link
-	href="${rootPath}/static/css/home_B.css?ver=2021-07-15-008"
+	href="${rootPath}/static/css/home_B.css?ver=2021-07-16-003"
 	rel="stylesheet" />
 <body>
 
@@ -63,32 +63,21 @@ document.addEventListener("DOMContentLoaded", ()=>{
 				<div class="header">
 					<h1 style="font-size: 90px; text-align: center">W O O</h1>
 					<h4 style="font-size: 32px; text-align: center">WEATHER & OOTD</h4>
-					
+
 				</div>
 			</div>
 			<div class="item-2">
 				<div
 					class="w_1"
 					style="border: 1px solid black;">
-					<c:forEach
-						items="${TODAY}"
-						var="TD">
-							<c:if
-								test="${TD.fcstTime == TIME && TD.category == '3시간 기온'}">
-								<div>${TD.fcstValue}</div>
-							</c:if>
-					</c:forEach>
-				</div>
-				<div
-					class="w_2"
-					style="border: 1px solid black;">
+
 					<c:forEach
 						items="${TODAY}"
 						var="TD">
 
 						<c:choose>
 							<c:when
-								test="${TD.category == '하늘상태' && TD.fcstValue =='맑음' && TD.fcstTime == '1200'}">
+								test="${TD.category == '하늘상태' && TD.fcstValue =='맑음' && TD.fcstTime == TIME}">
 								<div>
 									<img
 										src="${rootPath}/static/icon/size-large/맑음.png"
@@ -96,7 +85,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 								</div>
 							</c:when>
 							<c:when
-								test="${TD.category == '하늘상태' && TD.fcstValue =='구름많음'&&TD.fcstTime == '1200' }">
+								test="${TD.category == '하늘상태' && TD.fcstValue =='구름많음'&&TD.fcstTime == TIME }">
 								<div>
 									<img
 										src="${rootPath}/static/icon/size-large/구름많음.png"
@@ -104,7 +93,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 								</div>
 							</c:when>
 							<c:when
-								test="${TD.category == '하늘상태' && TD.fcstValue =='흐림' &&TD.fcstTime == '1200'}">
+								test="${TD.category == '하늘상태' && TD.fcstValue =='흐림' &&TD.fcstTime == TIME}">
 								<div>
 									<img
 										src="${rootPath}/static/icon/size-large/흐림.png"
@@ -112,14 +101,87 @@ document.addEventListener("DOMContentLoaded", ()=>{
 								</div>
 							</c:when>
 							<c:otherwise>
-
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
+
 				</div>
 				<div
-					class="w_3"
-					style="border: 1px solid black;">시간</div>
+					class="w_2"
+					style="border: 1px solid black;">
+
+					<c:forEach
+						items="${TODAY}"
+						var="TD">
+						<c:if test="${TD.category == '아침 최저기온'}">
+							<div>${TD.fcstValue}/</div>
+						</c:if>
+						<c:if test="${TD.category == '낮 최고기온'}">
+							<div>${TD.fcstValue}</div>
+						</c:if>
+					</c:forEach>
+
+				</div>
+				<div class="w_3">
+					<div class="w_3_a">
+						<div>기온</div>
+						<div>
+							<c:forEach
+								items="${TODAY}"
+								var="TD">
+								<c:if test="${TD.fcstTime == TIME && TD.category == '3시간 기온'}">
+									<div>${TD.fcstValue}</div>
+								</c:if>
+							</c:forEach>
+						</div>
+						<div>
+							<img src="${rootPath}/static/images/온도계.png" />
+						</div>
+					</div>
+					<div class="w_3_a">
+						<div>습도</div>
+						<div>
+							<c:forEach
+								items="${TODAY}"
+								var="TD">
+								<c:if test="${TD.fcstTime == TIME && TD.category == '3시간 기온'}">
+									<div>${TD.fcstValue}</div>
+								</c:if>
+							</c:forEach>
+						</div>
+						<div>
+							<img src="${rootPath}/static/images/humidity.png" />
+						</div>
+					</div>
+					<div class="w_3_a">
+						<div>강수확률</div>
+						<div>
+							<c:forEach
+								items="${TODAY}"
+								var="TD">
+								<c:if test="${TD.fcstTime == TIME && TD.category == '강수확률'}">
+									<div>${TD.fcstValue}</div>
+								</c:if>
+							</c:forEach>
+						</div>
+						<div>
+							<img src="${rootPath}/static/images/강수확률.png" />
+						</div>
+					</div>
+					<div class="w_3_a">
+						<div>풍향</div>
+						<c:forEach
+								items="${TODAY}"
+								var="TD">
+							<c:if test="${TD.fcstTime == TIME && TD.category == '풍향'}">
+								<div>${TD.fcstValue}</div>
+								<div>
+									<img src="${rootPath}/static/images/${TD.fcstValue}.png" />
+								</div>
+							</c:if>
+							</c:forEach>
+					</div>
+				</div>
 				<div class="w_4">
 					<div class="w_4_a">
 						<div>온도</div>
@@ -182,12 +244,21 @@ document.addEventListener("DOMContentLoaded", ()=>{
 					</div>
 					<div class="w_4_a">
 						<div>바람</div>
-						<div>
-							<img src="${rootPath}/static/images/온도계.png" />
-						</div>
+					
 						<div>21</div>
 					</div>
+					
 				</div>
+				<div class="w_5">
+					<div class="w_5_a">
+						<div>바람</div>
+						<div>21</div>
+					</div>
+					
+
+				</div>
+
+
 			</div>
 			<div class="item-3">
 				<figure class="snip1200">
@@ -202,62 +273,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
 					</div>
 					<figcaption class="o">
 						<div class="w_data_o">
-
 							<div class="w_data_o_text">
 								OOTD 추천을 원하시면<br> 로그인을 해주세요
 							</div>
-
-						</div>
-						<div class="heading_o">
-							<h1>
-								<span> OOTD</span>
-							</h1>
 						</div>
 					</figcaption>
 				</figure>
 			</div>
-		</div>
-		<div class="item-4">
-
-			<c:forEach
-				items="${TODAY}"
-				var="TD">
-				<c:choose>
-					<c:when test="${TD.fcstTime == '1200'}">
-						<div>${TD.category}</div>
-						<c:choose>
-							<c:when test="${TD.category == '하늘상태' && TD.fcstValue =='맑음' }">
-								<div>
-									<img
-										src="${rootPath}/static/icon/size-large/맑음.png"
-										width="100px">
-								</div>
-							</c:when>
-							<c:when test="${TD.category == '하늘상태' && TD.fcstValue =='구름많음' }">
-								<div>
-									<img
-										src="${rootPath}/static/icon/size-large/구름많음.png"
-										width="100px">
-								</div>
-							</c:when>
-							<c:when test="${TD.category == '하늘상태' && TD.fcstValue =='흐림' }">
-								<div>
-									<img
-										src="${rootPath}/static/icon/size-large/흐림.png"
-										width="100px">
-								</div>
-							</c:when>
-							<c:otherwise>
-								<div>${TD.fcstValue}</div>
-							</c:otherwise>
-						</c:choose>
-						
-					</c:when>
-				</c:choose>
-			</c:forEach>
-
-
-
 		</div>
 	</div>
 </body>

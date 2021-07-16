@@ -35,8 +35,11 @@ public class WeatherServiceImplV1 implements WeatherService {
 		StringBuilder queryURL = new StringBuilder();
 		queryURL.append(WeatherSecret.URL);
 		
+		int date = Integer.valueOf(day);
+
+		
 		String queryString = String.format("?serviceKey=%s&numOfRows=225&pageNo=1&dataType=JSON"
-				+ "&base_date=%s&base_time=0500&nx=%s&ny=%s", WeatherSecret.KEY, day, ar_x, ar_y);
+				+ "&base_date=%d&base_time=2300&nx=%s&ny=%s", WeatherSecret.KEY, date-1, ar_x, ar_y);
 		
 		queryURL.append(queryString);
 		
@@ -47,7 +50,7 @@ public class WeatherServiceImplV1 implements WeatherService {
 	@Override
 	public String getJsonString(String queryURL) throws MalformedURLException, IOException {
 		// TODO Auto-generated method stub
-		URL url = new URL(queryURL);
+URL url = new URL(queryURL);
 		
 		HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
 		
@@ -84,7 +87,7 @@ public class WeatherServiceImplV1 implements WeatherService {
 	public List<WeatherVO> getWeatherList(String jsonString) throws ParseException {
 		// TODO Auto-generated method stub
 		
-		JSONParser jParser = new JSONParser();
+JSONParser jParser = new JSONParser();
 		
 		JSONObject jObject = (JSONObject) jParser.parse(jsonString);
 		
