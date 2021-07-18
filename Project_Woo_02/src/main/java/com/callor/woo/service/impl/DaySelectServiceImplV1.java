@@ -30,7 +30,7 @@ public class DaySelectServiceImplV1 implements DaySelectService{
 		int date = Integer.valueOf(day);
 		
 //		log.debug("VO 사이즈{}",vo.size());
-		log.debug("오늘날짜 {}",date);
+//		log.debug("오늘날짜 {}",date);
 		int size = voList.size();
 		for(int index = 0; index < size; index++) {
 //			log.debug("인덱스 {}",index);
@@ -107,7 +107,21 @@ public class DaySelectServiceImplV1 implements DaySelectService{
 			} else if(category.equals("TMX")) {
 				category = "낮 최고기온";
 				fcstValue = fcstValue + "℃";
-			} else continue;
+			} else if(category.equals("VEC")) {
+				category = "풍향";
+				float f = Float.valueOf(fcstValue);
+				if(0 < f && f <= 45) fcstValue = "n"; 
+				else if(45 < f && f <= 90) fcstValue = "ne"; 
+				else if(90 < f && f <= 135) fcstValue = "e"; 
+				else if(135 < f && f <= 180) fcstValue = "se"; 
+				else if(180 < f && f <= 225) fcstValue = "s"; 
+				else if(225 < f && f <= 270) fcstValue = "sw"; 
+				else if(270 < f && f <= 315) fcstValue = "w"; 
+				else if(315 < f && f <= 360) fcstValue = "nw"; 
+			} else if(category.equals("WSD")) {
+				category = "풍속";
+				fcstValue = fcstValue + "m/s";
+			}
 
 			if(fcstdate == date) {
 //				log.debug("오늘날짜 {} {}",date,vo.getFcstDate());
