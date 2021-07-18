@@ -65,10 +65,15 @@ public class APIController {
 		log.debug("String addr {}", addr.trim());
 
 		List<AddrVO> location = nService.findByAddr(addr);
+<<<<<<< HEAD
 		AddrVO locations = location.get(0);
 		String location_addr = locations.getAr_addr();
 		
 		log.debug("locations {}", locations);
+=======
+
+		log.debug("location {}", location);
+>>>>>>> 51514b0ec0ca5a244ac3e26cec7db31cf7b601ce
 
 		Date date = new Date();
 
@@ -93,7 +98,15 @@ public class APIController {
 		List<WeatherDTO> today = (List<WeatherDTO>) weather.get("today");
 		List<WeatherDTO> tomorrow = (List<WeatherDTO>) weather.get("tomorrow");
 		List<WeatherDTO> afterTomorrow = (List<WeatherDTO>) weather.get("afterTomorrow");
+
+		//		log.debug("날씨전체 맵 {}", weather.toString());
+		//		log.debug("오늘날씨 {}",today.toString());
+				log.debug("내일날씨 {}",tomorrow.toString());
+		//		log.debug("2일뒤날씨 {}",afterTomorrow.toString());
+
+		String time = tService.time();
 		
+<<<<<<< HEAD
 		//		log.debug("날씨전체 맵 {}", weather.toString());
 		//		log.debug("오늘날씨 {}",today.toString());
 		//		log.debug("내일날씨 {}",tomorrow.toString());
@@ -102,6 +115,9 @@ public class APIController {
 		String time = tService.time();
 		
 		model.addAttribute("LOCATION",location_addr);
+=======
+		model.addAttribute("LOCATION",location);
+>>>>>>> 51514b0ec0ca5a244ac3e26cec7db31cf7b601ce
 		model.addAttribute("TIME", time);
 		model.addAttribute("TODAY", today);
 		model.addAttribute("TOMORROW", tomorrow);

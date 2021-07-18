@@ -66,7 +66,9 @@ public class DaySelectServiceImplV1 implements DaySelectService{
 							break;
 				}
 
-			} else if(category.equals("R06")) {
+			} 
+			
+			else if(category.equals("R06")) {
 				category = "6시간 강수량";
 				float f = Float.valueOf(fcstValue);
 				if(f < 0.1) fcstValue = "없음";

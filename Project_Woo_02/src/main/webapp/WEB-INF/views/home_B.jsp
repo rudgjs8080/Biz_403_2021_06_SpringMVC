@@ -41,7 +41,12 @@ document.addEventListener("DOMContentLoaded", ()=>{
 </script>
 </head>
 
+<<<<<<< HEAD
 <link href="${rootPath}/static/css/home_B.css?ver=2021-07-18-002"
+=======
+<link
+	href="${rootPath}/static/css/home_B.css?ver=2021-07-16-004"
+>>>>>>> 51514b0ec0ca5a244ac3e26cec7db31cf7b601ce
 	rel="stylesheet" />
 <body>
 
@@ -60,9 +65,18 @@ document.addEventListener("DOMContentLoaded", ()=>{
 				</div>
 			</div>
 			<div class="item-2">
+<<<<<<< HEAD
 				<div class="w_1">
 
 					<c:forEach items="${TODAY}" var="TD">
+=======
+				<div
+					class="w_1">
+
+					<c:forEach
+						items="${TODAY}"
+						var="TD">
+>>>>>>> 51514b0ec0ca5a244ac3e26cec7db31cf7b601ce
 
 						<c:choose>
 							<c:when
@@ -92,6 +106,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 					</c:forEach>
 
 				</div>
+<<<<<<< HEAD
 				<div class="w_2">
 					<div>${LOCATION}</div>
 					<div>
@@ -104,12 +119,34 @@ document.addEventListener("DOMContentLoaded", ()=>{
 						</c:if>
 						</c:forEach>
 					</div>
+=======
+				<div
+					class="w_2">
+
+					<c:forEach
+						items="${TODAY}"
+						var="TD">
+						<c:if test="${TD.category == '아침 최저기온'}">
+							${TD.fcstValue} / 
+						</c:if>
+						<c:if test="${TD.category == '낮 최고기온'}">
+							${TD.fcstValue}
+						</c:if>
+					</c:forEach>
+
+>>>>>>> 51514b0ec0ca5a244ac3e26cec7db31cf7b601ce
 				</div>
 				<div class="w_3">
 					<div class="w_3_a">
 						<div>기온</div>
 						<div>
+<<<<<<< HEAD
 							<c:forEach items="${TODAY}" var="TD">
+=======
+							<c:forEach
+								items="${TODAY}"
+								var="TD">
+>>>>>>> 51514b0ec0ca5a244ac3e26cec7db31cf7b601ce
 								<c:if test="${TD.fcstTime == TIME && TD.category == '3시간 기온'}">
 									<div>${TD.fcstValue}</div>
 								</c:if>
@@ -122,7 +159,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
 					<div class="w_3_a">
 						<div>습도</div>
 						<div>
+<<<<<<< HEAD
 							<c:forEach items="${TODAY}" var="TD">
+=======
+							<c:forEach
+								items="${TODAY}"
+								var="TD">
+>>>>>>> 51514b0ec0ca5a244ac3e26cec7db31cf7b601ce
 								<c:if test="${TD.fcstTime == TIME && TD.category == '3시간 기온'}">
 									<div>${TD.fcstValue}</div>
 								</c:if>
@@ -135,7 +178,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
 					<div class="w_3_a">
 						<div>강수</div>
 						<div>
+<<<<<<< HEAD
 							<c:forEach items="${TODAY}" var="TD">
+=======
+							<c:forEach
+								items="${TODAY}"
+								var="TD">
+>>>>>>> 51514b0ec0ca5a244ac3e26cec7db31cf7b601ce
 								<c:if test="${TD.fcstTime == TIME && TD.category == '강수확률'}">
 									<div>${TD.fcstValue}</div>
 								</c:if>
@@ -147,7 +196,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
 					</div>
 					<div class="w_3_a">
 						<div>풍향</div>
+<<<<<<< HEAD
 						<c:forEach items="${TODAY}" var="TD">
+=======
+						<c:forEach
+							items="${TODAY}"
+							var="TD">
+>>>>>>> 51514b0ec0ca5a244ac3e26cec7db31cf7b601ce
 							<c:if test="${TD.fcstTime == TIME && TD.category == '풍향'}">
 								<div>${TD.fcstValue}</div>
 								<div>
@@ -158,7 +213,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
 					</div>
 				</div>
 				<div class="w_4">
+<<<<<<< HEAD
 					<c:forEach items="${TODAY}" var="TD">
+=======
+					<c:forEach
+						items="${TODAY}"
+						var="TD">
+>>>>>>> 51514b0ec0ca5a244ac3e26cec7db31cf7b601ce
 						<c:if test="${TD.category == '3시간 기온'}">
 							<div class="w_4_a">
 								<div>${TD.fcstTime}</div>
@@ -173,10 +234,19 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 
 				<div class="w_5">
+<<<<<<< HEAD
 					<c:forEach items="${TOMORROW}" var="TM">
 						<c:if test="${TM.category == '3시간 기온'}">
 							<div class="w_5_a">
 								<div>{TM.fcstTime}</div>
+=======
+					<c:forEach
+						items="${TOMORROW}"
+						var="TM">
+						<c:if test="${TM.category == '3시간 기온'}">
+							<div class="w_5_a">
+								<div>${TM.fcstTime}</div>
+>>>>>>> 51514b0ec0ca5a244ac3e26cec7db31cf7b601ce
 								<div>${TM.fcstValue}</div>
 							</div>
 						</c:if>

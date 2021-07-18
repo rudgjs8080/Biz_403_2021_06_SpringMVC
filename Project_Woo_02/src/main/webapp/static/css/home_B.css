@@ -68,10 +68,16 @@ button.lg, button.jo {
 
 .w_2 {
 	grid-column: 3/4;
+<<<<<<< HEAD
 	justify-content: center;
 	font-size: 150%;
 	display: flex;
 	flex-direction: column;
+=======
+	text-align: center;
+	font-size: 150%;
+	display: flex;
+>>>>>>> 51514b0ec0ca5a244ac3e26cec7db31cf7b601ce
 }
 
 .w_3 {
@@ -123,8 +129,14 @@ button.lg, button.jo {
 	margin: 0.3%;
 }
 
+<<<<<<< HEAD
 .w_4_a div, .w_5_a div {
 	flex: 1;
+=======
+.w_4_a img, .w_5_a img {
+	flex: 1;
+	width: 50%;
+>>>>>>> 51514b0ec0ca5a244ac3e26cec7db31cf7b601ce
 	margin: 1%;
 }
 
@@ -246,9 +258,15 @@ figure.snip1200:hover div.w_data, figure.snip1200:hover div.w_data_o {
 	}
 	.w_2 {
 		grid-column: 1/4;
+<<<<<<< HEAD
 		justify-content: space-between;
 		font-size: 150%;
 		display: flex;
 		flex-direction: row;
+=======
+		justify-content:center;
+		font-size: 150%;
+		display: flex;
+>>>>>>> 51514b0ec0ca5a244ac3e26cec7db31cf7b601ce
 	}
 }
